@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Call you representatives to ensure they understand the importance of climate change and take seriously their unique position to address it.  It is imperative that the politicians at all levels recognize the historical, geological, existential importance of this moment and that they take immediate action commensurate to with the need.  It's time to transform society, now.  So whenever you take a shit with your phone, use this page to call them, and let them hear you flush.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.14.0/css/all.css">
+    <link rel="stylesheet" href="{{ "/w3.css" |url }}">
+    <link rel="stylesheet" href="{{ "/s4c.css" |url }}">
+    <link rel="icon" href="{{ "/favicon.ico" |url }}">
+  </head>
+  <body>
+    <header>
+      {% include top %}
+    </header>
+    <div class="w3-container">
+      {{ content | safe }}
+    </div>
+    {% include bottom %}
+  </body>
+  <script>
+  </script>
+</html>
