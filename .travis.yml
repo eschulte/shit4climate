@@ -3,7 +3,7 @@ node_js:
   - 10
 before_script:
   - npm install @11ty/eleventy -g
-  - npm install markdown-it markdown-it-anchor markdown-it-deflist
+  - npm install markdown-it markdown-it-anchor markdown-it-deflist clean-css
 script:
   - eleventy
 deploy:

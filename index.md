@@ -3,8 +3,8 @@ layout: default
 title: Give a Shit for the Climate
 ---
 
-<h1 class="s4c-only-small-phones">Give a Climate Shit</h1>
-<h1 class="s4c-only-medium-phones">Give a Shit for Climate</h1>
+<h1 class="s4c-only-small-phones">Shit 4 Climate</h1>
+<h1 class="s4c-only-medium-phones">A Shit for Climate</h1>
 <h1 class="s4c-only-large-phones">Give a Shit for the Climate</h1>
 
 <form>
@@ -23,90 +23,52 @@ Topics
 ------
 
 <div class="slider">
-
-  <a href="#slide-1">1</a>
-  <a href="#slide-2">2</a>
-  <a href="#slide-3">3</a>
-  <a href="#slide-4">4</a>
-  <a href="#slide-5">5</a>
-
-  <div class="slides">
-    <div id="slide-1">
-      1
-    </div>
-    <div id="slide-2">
-      2
-    </div>
-    <div id="slide-3">
-      3
-    </div>
-    <div id="slide-4">
-      4
-    </div>
-    <div id="slide-5">
-      5
-    </div>
-  </div>
+{% assign index = 0 %}
+{% for topic in collections.topics %}
+<a href="#slide-{{ index }}">{{ index }}</a>{% assign index = index| plus: 1 %}{% endfor %}
+<div class="slides">
+{% assign index = 0 %}
+{% for topic in collections.topics %}
+<div id="slide-{{ index }}">
+<a href="{{ topic.url| url }}">{{ topic.data.title }}</a>
+</div>
+{% assign index = index| plus: 1 %}
+{% endfor %}
+</div>
 </div>
 
 Scripts
 -------
 
 <div class="slider">
-
-  <a href="#slide-1">1</a>
-  <a href="#slide-2">2</a>
-  <a href="#slide-3">3</a>
-  <a href="#slide-4">4</a>
-  <a href="#slide-5">5</a>
-
-  <div class="slides">
-    <div id="slide-1">
-      1
-    </div>
-    <div id="slide-2">
-      2
-    </div>
-    <div id="slide-3">
-      3
-    </div>
-    <div id="slide-4">
-      4
-    </div>
-    <div id="slide-5">
-      5
-    </div>
-  </div>
+{% assign index = 0 %}
+{% for script in collections.scripts %}
+<a href="#slide-{{ index }}">{{ index }}</a>{% assign index = index| plus: 1 %}{% endfor %}
+<div class="slides">
+{% assign index = 0 %}
+{% for script in collections.scripts %}
+<div id="slide-{{ index }}">
+<a href="{{ script.url| url }}">{{ script.data.title }}</a>
+</div>
+{% assign index = index| plus: 1 %}
+{% endfor %}
+</div>
 </div>
 
 Questions
 ---------
 
 <div class="slider">
-
-  <a href="#slide-1">1</a>
-  <a href="#slide-2">2</a>
-  <a href="#slide-3">3</a>
-  <a href="#slide-4">4</a>
-  <a href="#slide-5">5</a>
-
-  <div class="slides">
-    <div id="slide-1">
-      1
-    </div>
-    <div id="slide-2">
-      2
-    </div>
-    <div id="slide-3">
-      3
-    </div>
-    <div id="slide-4">
-      4
-    </div>
-    <div id="slide-5">
-      5
-    </div>
-  </div>
+{% assign index = 0 %}
+{% for question in collections.questions %}
+<a href="#slide-{{ index }}">{{ index }}</a>{% assign index = index| plus: 1 %}{% endfor %}
+<div class="slides">
+{% assign index = 0 %}
+{% for question in collections.questions %}
+<div id="slide-{{ index }}">
+<a href="{{ question.url| url }}">{{ question.data.title }}</a>
 </div>
-
-> Let them hear you flush.
+{% assign index = index| plus: 1 %}
+{% endfor %}
+</div>
+</div>

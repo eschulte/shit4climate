@@ -1,5 +1,6 @@
 ---
 title: Carbon Tax
+tags: topics
 brief: It would have worked.  If you believe in markets and climate change believe in it.
 ---
 

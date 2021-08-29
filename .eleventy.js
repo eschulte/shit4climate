@@ -1,3 +1,5 @@
+const CleanCSS = require("clean-css");
+
 module.exports = function(eleventyConfig) {
   // Customized Markdown Export.
   let markdownIt = require("markdown-it");
@@ -6,14 +8,17 @@ module.exports = function(eleventyConfig) {
   md.use(require("markdown-it-anchor"));
   eleventyConfig.setLibrary("md", md);
 
+  // clean-css
+  eleventyConfig.addFilter("cssmin", function(code) {
+    return new CleanCSS({}).minify(code).styles;
+  });
+
   eleventyConfig.addPairedShortcode("markdown", (content) => {
     return md.render(content);
   });
 
   // Files to copy
-  eleventyConfig.addPassthroughCopy("favicon.ico");
-  eleventyConfig.addPassthroughCopy("s4c.css");
-  eleventyConfig.addPassthroughCopy("w3.css");
+  // eleventyConfig.addPassthroughCopy("favicon.ico");
 
   // Paths
   eleventyConfig.addPassthroughCopy("img");

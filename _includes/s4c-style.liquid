@@ -1,13 +1,25 @@
+/*                                                   -*- mode:css -*- */
+
 body{
-    background-image: linear-gradient(skyblue, lightgreen, orange, red);
+    background-image: linear-gradient(skyblue, skyblue, black);
+    background-repeat: no-repeat;
 }
 
 /* From: https://css-tricks.com/css-only-carousel/ */
 .slider {
   margin: auto;
-  width: 300px;
   text-align: center;
   overflow: hidden;
+}
+@media (max-width:360px){
+    .slider {
+        width: 270px;
+    }
+}
+@media (min-width:360px){
+    .slider {
+        width: 300px;
+    }
 }
 
 .slides {
@@ -40,7 +52,7 @@ body{
 .slides > div {
   scroll-snap-align: start;
   flex-shrink: 0;
-  width: 300px;
+  /* width: 300px; */
   height: 300px;
   margin-right: 50px;
   border-radius: 10px;
@@ -53,7 +65,17 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 100px;
+  /* font-size: 100px; */
+}
+@media (max-width:360px){
+    .slides > div {
+        width: 270px;
+    }
+}
+@media (min-width:360px){
+    .slides > div {
+        width: 300px;
+    }
 }
 .slides > div:target {
 /*   transform: scale(0.8); */
