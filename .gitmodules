@@ -1,0 +1,6 @@
+[submodule "_data/legislators"]
+	path = _data/legislators
+	url = git@github.com:unitedstates/congress-legislators.git
+[submodule "_data/zipcodes"]
+	path = _data/zipcodes
+	url = git@github.com:OpenSourceActivismTech/us-zipcodes-congress.git
