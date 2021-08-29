@@ -21,7 +21,7 @@ module.exports = function(eleventyConfig) {
   // eleventyConfig.addPassthroughCopy("favicon.ico");
 
   // Paths
-  eleventyConfig.addPassthroughCopy("img");
+  // eleventyConfig.addPassthroughCopy("img");
 
   return eleventyConfig;
 };
