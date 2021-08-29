@@ -1,0 +1,209 @@
+/* -*- mode:css -*- */
+/* From: https://codepen.io/saunandrea/pen/NmepVY */
+body .fire {
+  transform: translate(-50%, -25%);
+  height: 20vw;
+  width: 20vw;
+}
+body .fire .flames {
+  position: absolute;
+  bottom: 40%;
+  left: 50%;
+  width: 60%;
+  height: 60%;
+  transform: translateX(-50%) rotate(45deg);
+}
+body .fire .flames .flame {
+  position: absolute;
+  right: 0%;
+  bottom: 0%;
+  width: 0%;
+  height: 0%;
+  background-color: #FFDC01;
+  border-radius: 1vw;
+}
+body .fire .flames .flame:nth-child(2n+1) {
+  -webkit-animation: flameodd 1.5s ease-in infinite;
+          animation: flameodd 1.5s ease-in infinite;
+}
+body .fire .flames .flame:nth-child(2n) {
+  -webkit-animation: flameeven 1.5s ease-in infinite;
+          animation: flameeven 1.5s ease-in infinite;
+}
+body .fire .flames .flame:nth-child(1) {
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+body .fire .flames .flame:nth-child(2) {
+  -webkit-animation-delay: 0.375s;
+          animation-delay: 0.375s;
+}
+body .fire .flames .flame:nth-child(3) {
+  -webkit-animation-delay: 0.75s;
+          animation-delay: 0.75s;
+}
+body .fire .flames .flame:nth-child(4) {
+  -webkit-animation-delay: 1.125s;
+          animation-delay: 1.125s;
+}
+body .fire .logs {
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 15%;
+}
+body .fire .logs:before, body .fire .logs:after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(20deg);
+  height: 100%;
+  width: 100%;
+  border-radius: 1vw;
+  background-color: #70392F;
+}
+body .fire .logs:before {
+  transform: translate(-50%, -50%) rotate(-20deg);
+  background-color: #612E25;
+}
+
+@-webkit-keyframes flameodd {
+  0%, 100% {
+    width: 0%;
+    height: 0%;
+  }
+  25% {
+    width: 100%;
+    height: 100%;
+  }
+  0% {
+    background-color: #FFDC01;
+    z-index: 1000000;
+  }
+  40% {
+    background-color: #FDAC01;
+    z-index: 1000000;
+  }
+  100% {
+    background-color: #F73B01;
+    z-index: -10;
+  }
+  0% {
+    right: 0%;
+    bottom: 0%;
+  }
+  25% {
+    right: 1%;
+    bottom: 2%;
+  }
+  100% {
+    right: 150%;
+    bottom: 170%;
+  }
+}
+
+@keyframes flameodd {
+  0%, 100% {
+    width: 0%;
+    height: 0%;
+  }
+  25% {
+    width: 100%;
+    height: 100%;
+  }
+  0% {
+    background-color: #FFDC01;
+    z-index: 1000000;
+  }
+  40% {
+    background-color: #FDAC01;
+    z-index: 1000000;
+  }
+  100% {
+    background-color: #F73B01;
+    z-index: -10;
+  }
+  0% {
+    right: 0%;
+    bottom: 0%;
+  }
+  25% {
+    right: 1%;
+    bottom: 2%;
+  }
+  100% {
+    right: 150%;
+    bottom: 170%;
+  }
+}
+@-webkit-keyframes flameeven {
+  0%, 100% {
+    width: 0%;
+    height: 0%;
+  }
+  25% {
+    width: 100%;
+    height: 100%;
+  }
+  0% {
+    background-color: #FFDC01;
+    z-index: 1000000;
+  }
+  40% {
+    background-color: #FDAC01;
+    z-index: 1000000;
+  }
+  100% {
+    background-color: #F73B01;
+    z-index: -10;
+  }
+  0% {
+    right: 0%;
+    bottom: 0%;
+  }
+  25% {
+    right: 2%;
+    bottom: 1%;
+  }
+  100% {
+    right: 170%;
+    bottom: 150%;
+  }
+}
+@keyframes flameeven {
+  0%, 100% {
+    width: 0%;
+    height: 0%;
+  }
+  25% {
+    width: 100%;
+    height: 100%;
+  }
+  0% {
+    background-color: #FFDC01;
+    z-index: 1000000;
+  }
+  40% {
+    background-color: #FDAC01;
+    z-index: 1000000;
+  }
+  100% {
+    background-color: #F73B01;
+    z-index: -10;
+  }
+  0% {
+    right: 0%;
+    bottom: 0%;
+  }
+  25% {
+    right: 2%;
+    bottom: 1%;
+  }
+  100% {
+    right: 170%;
+    bottom: 150%;
+  }
+}
