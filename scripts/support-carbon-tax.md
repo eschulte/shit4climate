@@ -1,5 +1,5 @@
 ---
-title: Carbon Tax
+title: Support a Carbon Tax
 tags: scripts
 ---
 

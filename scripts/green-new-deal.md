@@ -1,5 +1,5 @@
 ---
-title: Green New Deal
+title: Support a Green New Deal
 tags: scripts
 ---
 
