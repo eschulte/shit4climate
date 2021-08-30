@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: index
 title: Give a Shit for the Climate
 ---
 
