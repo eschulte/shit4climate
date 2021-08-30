@@ -1,5 +1,6 @@
 ---
 title: Green New Deal
+layout: default
 tags: topics
 brief: A green new deal.
 ---

@@ -1,5 +1,6 @@
 ---
 title: What's your biggest climate concern?
+layout: default
 tags: questions
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Support a Green New Deal
+layout: default
 tags: scripts
 ---
 

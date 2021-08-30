@@ -1,5 +1,6 @@
 ---
 title: Declare War on Carbon
+layout: default
 tags: scripts
 ---
 

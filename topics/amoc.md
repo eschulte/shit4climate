@@ -1,5 +1,6 @@
 ---
-title: Atlantic Meriodional Overturning Circulation
+title: Atlantic Meridional Overturning Circulation
+layout: default
 tags: topics
 brief: It could dissappear.
 ---
