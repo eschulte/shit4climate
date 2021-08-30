@@ -8,11 +8,11 @@
     <!-- <link rel="icon" href="{{ "/favicon.ico" |url }}"> -->
     <style>
       {% capture css %}
-        {% include w3 %}
-        {% include s4c %}
-        {% include cloud %}
-        {% include tree %}
-        {% include fire %}
+      {% include w3 %}
+      {% include s4c %}
+      {% include cloud %}
+      {% include tree %}
+      {% include fire %}
       {% endcapture %}
       {{ css | cssmin | safe }}
     </style>
@@ -27,6 +27,7 @@
     {% include bottom %}
   </body>
   <script>
-    {% include by-zip %}
+    // TODO: Still missing some, e.g. 15232.
+    const zips = {{ zips }};
   </script>
 </html>
