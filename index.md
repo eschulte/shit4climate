@@ -9,8 +9,10 @@ title: Give a Shit for the Climate
 
 <form>
 Enter your <label>Postal Code:</label>
-<input type="text" name="postal-code" id="postal-code" autocomplete="postal-code"></input>
+<input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" onInput="zip_key_press()"></input>
 </form>
+
+<div class="w3-container w3-margin" id="call-by-zip"></div>
 
 We'll help you call your representative suggesting
 [topics](#topics),

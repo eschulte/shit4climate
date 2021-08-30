@@ -5,6 +5,11 @@ body{
     background-repeat: no-repeat;
 }
 
+a[href^="tel:"]:before {
+    content: "\260e";
+    margin-right: 10px;
+}
+
 /* From: https://css-tricks.com/css-only-carousel/ */
 .slider {
   margin: auto;
