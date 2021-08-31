@@ -27,21 +27,29 @@
 (defun state (legislator)
   (find-if #'stringp (mapcar {key :state} (key :terms legislator)) :from-end t))
 
-(defun zip (legislator)
-  (third
-   (find-if (lambda (row)
-              (and (string= (state legislator) (second row))
-                   (string= (format nil "~d" (district legislator)) (fourth row))))
-            zip-districts)))
+(defun name (legislator)
+  (key :official_full (key :name legislator)))
 
-(defvar by-zip
-  (remove nil
-          (mapcar (lambda (legislator)
-                    (when-let ((zip (zip legislator))
-                               (phone (phone legislator))
-                               (name (key :official_full (key :name legislator))))
-                      (list zip phone name)))
-                  legislators)))
+(defun zips (legislator)
+  (mapcar #'third
+          (remove-if-not (lambda (row)
+                           (and (string= (state legislator) (second row))
+                                (string= (format nil "~d" (district legislator)) (fourth row))))
+                         zip-districts)))
+
+(defun collect-by-zip (&aux failures)
+  (values (mappend (lambda (legislator)
+                     (if-let ((zips (zips legislator))
+                              (phone (phone legislator))
+                              (name (name legislator)))
+                       (mapcar {list _ phone name} zips)
+                       (prog1 nil
+                         (warn "Missing information for ~s" (list zips phone name))
+                         (push (list zips phone name) failures))))
+                   legislators)
+          (reverse failures)))
+
+(defvar by-zip (collect-by-zip))
 
 (with-open-file (out "_data/zips.json" :direction :output :if-exists :supersede)
           (format out "{~:{~s:[~s,~s],~%~}~%" (butlast by-zip))
