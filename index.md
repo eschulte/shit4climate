@@ -17,7 +17,8 @@ Enter your <label>Postal Code:</label>
 <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" onInput="zip_key_press()"></input>
 </form>
 
-<div class="w3-container w3-margin" id="call-by-zip"></div>
+<div class="w3-container w3-margin" id="call-representative-by-zip"></div>
+<div class="w3-container w3-margin" id="call-senator-by-zip"></div>
 
 We'll help make your call productive with
 [topics](#topics),
