@@ -63,6 +63,7 @@
                             zip-districts)))))
 
 (defun by-zip (senators-or-representatives &aux failures)
+  ;; TODO: Instead build a hash of ZIP -> [List of matches]
   (values (mappend (lambda (rep)
                      (if-let ((zips (zips rep))
                               (phone (phone rep))

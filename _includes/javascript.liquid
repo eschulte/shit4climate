@@ -12,6 +12,7 @@ function zip_key_press(){
     // Representative
     var call_by_zip = document.getElementById("call-representative-by-zip");
     if(representative_zips[partial_zip]){
+      // TODO: Instead map over adding every one.
       var phone = representative_zips[partial_zip][0]
       var name = representative_zips[partial_zip][1]
       call_by_zip.innerHTML = "Call Representative <b>"+name+"</b> at</br><a href=\"tel:+"+phone+"\">"+phone+"</a>."
@@ -21,6 +22,7 @@ function zip_key_press(){
     // Senator
     var call_by_zip = document.getElementById("call-senator-by-zip");
     if(senator_zips[partial_zip]){
+      // TODO: Instead map over adding every one.
       var phone = senator_zips[partial_zip][0]
       var name = senator_zips[partial_zip][1]
       call_by_zip.innerHTML = "Call Senator <b>"+name+"</b> at</br><a href=\"tel:+"+phone+"\">"+phone+"</a>."

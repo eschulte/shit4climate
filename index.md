@@ -17,6 +17,7 @@ Enter your <label>Postal Code:</label>
 <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" onInput="zip_key_press()"></input>
 </form>
 
+<!-- TODO: Instead back to one div and add each as a ul>li or something. -->
 <div class="w3-container w3-margin" id="call-representative-by-zip"></div>
 <div class="w3-container w3-margin" id="call-senator-by-zip"></div>
 
