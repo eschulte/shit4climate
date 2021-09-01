@@ -63,16 +63,17 @@
                             zip-districts)))))
 
 (defun by-zip (senators-or-representatives &aux failures)
-  ;; TODO: Instead build a hash of ZIP -> [List of matches]
-  (values (mappend (lambda (rep)
-                     (if-let ((zips (zips rep))
-                              (phone (phone rep))
-                              (name (name rep)))
-                       (mapcar {list _ phone name} zips)
-                       (prog1 nil
-                         (warn "Missing information for ~s" (list zips phone name))
-                         (push (list zips phone name) failures))))
-                   senators-or-representatives)
+  (values (remove-duplicates
+           (mappend (lambda (rep)
+                      (if-let ((zips (zips rep))
+                               (phone (phone rep))
+                               (name (name rep)))
+                        (mapcar {list _ phone name} zips)
+                        (prog1 nil
+                          (warn "Missing information for ~s" (list zips phone name))
+                          (push (list zips phone name) failures))))
+                    senators-or-representatives)
+           :test #'equalp)
           (reverse failures)))
 
 (let ((by-zip (by-zip senators)))
