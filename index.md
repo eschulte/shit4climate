@@ -35,8 +35,12 @@ Topics
 <div class="slides">
 {% assign index = 0 %}
 {% for topic in collections.topics %}
-<div id="slide-{{ index }}">
-<a href="{{ topic.url| url }}">{{ topic.data.title }}</a>
+<div id="slide-{{ index }}" class="w3-container">
+<a href="{{ topic.url| url }}">
+<h3>{{ topic.data.title }}</h3>
+<p class="w3-margin">{{ topic.data.brief|safe }}</p>
+</a>
+
 </div>
 {% assign index = index| plus: 1 %}
 {% endfor %}
@@ -50,7 +54,7 @@ Scripts
 <div class="slides">
 {% assign index = 0 %}
 {% for script in collections.scripts %}
-<div id="slide-{{ index }}">
+<div id="slide-{{ index }}" class="w3-container">
 <a href="{{ script.url| url }}">{{ script.data.title }}</a>
 </div>
 {% assign index = index| plus: 1 %}
@@ -65,7 +69,7 @@ Questions
 <div class="slides">
 {% assign index = 0 %}
 {% for question in collections.questions %}
-<div id="slide-{{ index }}">
+<div id="slide-{{ index }}" class="w3-container">
 <a href="{{ question.url| url }}">{{ question.data.title }}</a>
 </div>
 {% assign index = index| plus: 1 %}

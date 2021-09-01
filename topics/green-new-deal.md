@@ -2,7 +2,7 @@
 title: Green New Deal
 layout: default
 tags: topics
-brief: A green new deal.
+brief: A <i>great</i> new deal.
 ---
 
 Don't knock it unless you have something of your own that's of a scale appropriate to the need.
