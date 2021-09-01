@@ -34,4 +34,8 @@ function zip_key_press(){
       call_by_zip.innerHTML = "No senator found for postal code <b>"+partial_zip+"</b>!";
     }
   }
+  if(partial_zip.length < 5){
+    document.getElementById("call-representative-by-zip").innerHTML = "";
+    document.getElementById("call-senator-by-zip").innerHTML = "";
+  }
 }
