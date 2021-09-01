@@ -21,11 +21,15 @@ function zip_key_press(){
     }
     // Senator
     var call_by_zip = document.getElementById("call-senator-by-zip");
+    call_by_zip.innerHTML = ""
+    senator_zips.filter(e => e[0] == partial_zip).forEach(e => {
+      call_by_zip.innerHTML += "Call Senator <b>"+e[1][1]+"</b> at</br><a href=\"tel:+"+e[1][0]+"\">"+e[1][0]+"</a>.</br>"
+    })
     if(senator_zips[partial_zip]){
       // TODO: Instead map over adding every one.
       var phone = senator_zips[partial_zip][0]
       var name = senator_zips[partial_zip][1]
-      call_by_zip.innerHTML = "Call Senator <b>"+name+"</b> at</br><a href=\"tel:+"+phone+"\">"+phone+"</a>."
+      
     } else {
       call_by_zip.innerHTML = "No senator found for postal code <b>"+partial_zip+"</b>!";
     }

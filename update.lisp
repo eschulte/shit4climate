@@ -77,8 +77,8 @@
 
 (let ((by-zip (by-zip senators)))
   (with-open-file (out "_data/senator_zips.json" :direction :output :if-exists :supersede)
-    (format out "{~:{~s:[~s,~s],~%~}~%" (butlast by-zip))
-    (format out "~:{~s:[~s,~s]~}}~%" (last by-zip))))
+    (format out "[~:{[~s,[~s,~s]],~%~}" (butlast by-zip))
+    (format out "~:{[~s,[~s,~s]]~}]~%" (last by-zip))))
 
 (let ((by-zip (by-zip representatives)))
   (with-open-file (out "_data/representative_zips.json" :direction :output :if-exists :supersede)
