@@ -11,7 +11,7 @@ a[href^="tel:"]:before {
 }
 
 body.s4c-fill, html.s4c-fill {
-    height: 100%;
+    min-height: max(100%, 1000px);
 }
 
 .s4c-blue {
@@ -21,17 +21,19 @@ body.s4c-fill, html.s4c-fill {
 
 /* From: https://css-tricks.com/css-only-carousel/ */
 .slider {
+  position:relative;
   margin: auto;
   overflow: hidden;
+  border-radius: 0 80px 80px 0;
 }
 @media (max-width:360px){
     .slider {
-        width: 270px;
-    }
+        width: 100%;
+  }
 }
 @media (min-width:360px){
     .slider {
-        width: 300px;
+        width: 100%;
     }
 }
 
@@ -46,6 +48,8 @@ body.s4c-fill, html.s4c-fill {
 
   scrollbar-color: black;
   scrollbar-width: 10px;
+
+  border-radius: 0 80px 80px 0;
 
   /*
   scroll-snap-points-x: repeat(300px);
@@ -80,7 +84,7 @@ body.s4c-fill, html.s4c-fill {
   /* width: 300px; */
   border: gray solid 4px;
   height: 300px;
-  margin-right: 50px;
+  margin-right: 0;
   border-radius: 10px;
   background: #eee;
   transform-origin: center;

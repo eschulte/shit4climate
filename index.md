@@ -32,6 +32,7 @@ Topics
 ------
 
 <div class="slider">
+<div class="cylinder"></div>
 <div class="slides">
 {% assign index = 0 %}
 {% for topic in collections.topics %}
@@ -50,6 +51,7 @@ Scripts
 -------
 
 <div class="slider">
+<div class="cylinder"></div>
 <div class="slides">
 {% assign index = 0 %}
 {% for script in collections.scripts %}
@@ -68,6 +70,7 @@ Questions
 ---------
 
 <div class="slider">
+<div class="cylinder"></div>
 <div class="slides">
 {% assign index = 0 %}
 {% for question in collections.questions %}
