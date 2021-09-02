@@ -9,8 +9,8 @@ title: Give a Shit for the Climate
 
 Tired of spending your toilet time doom-scrolling environmental news?
 Put your phone (and all those depressing facts your friends don't want
-to hear) to good use!  Call your representative and give them a
-piece of your mind.
+to hear) to good use!  Call your representative and give them a piece
+of your mind.
 
 <form class="w3-container w3-margin">
 Enter your <label>Postal Code:</label>
@@ -25,6 +25,8 @@ We'll help make your call productive with
 [topics](#topics),
 [scripts](#scripts), and
 [questions](#questions).
+So hit a phone number, put it on speaker, jump back here, and let’s
+give a poor congressional staffer some shit.
 
 <div id="call-link"></div>
 
