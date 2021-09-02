@@ -78,7 +78,7 @@ body.s4c-fill, html.s4c-fill {
 .slides::scrollbar-track {
   background: transparent;
 }
-.slides > div {
+.slides > a > div {
   scroll-snap-align: start;
   flex-shrink: 0;
   /* width: 300px; */
@@ -97,17 +97,14 @@ body.s4c-fill, html.s4c-fill {
   /* font-size: 100px; */
 }
 @media (max-width:360px){
-    .slides > div {
+    .slides > a > div {
         width: 270px;
     }
 }
 @media (min-width:360px){
-    .slides > div {
+    .slides > a > div {
         width: 300px;
     }
-}
-.slides > div:target {
-/*   transform: scale(0.8); */
 }
 
 .slider > a {
@@ -129,14 +126,14 @@ body.s4c-fill, html.s4c-fill {
   background: #000;
 }
 
-.slider > div > div > a {
+.slider > div > a {
     text-decoration: none;
 }
-.slider > div > div > a:hover {
-    text-decoration: underline;
+.slider > div > a:hover {
+    /* text-decoration: underline; */
+    filter: brightness(0.85);
 }
 
-/* Don't need button navigation */
 @supports (scroll-snap-type) {
   .slider > a {
     display: none;

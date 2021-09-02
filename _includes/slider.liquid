@@ -3,12 +3,12 @@
 <div class="slides">
 {% assign index = 0 %}
 {% for piece in roll %}
-<div id="slide-{{ index }}" class="w3-container">
 <a href="{{ piece.url| url }}">
+<div id="slide-{{ index }}" class="w3-container">
 <h3>{{ piece.data.title }}</h3>
 <p class="w3-margin">{{ piece.data.brief|safe }}</p>
-</a>
 </div>
+</a>
 {% assign index = index| plus: 1 %}
 {% endfor %}
 </div>
