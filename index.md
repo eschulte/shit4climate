@@ -31,56 +31,17 @@ We'll help make your call productive with
 Topics
 ------
 
-<div class="slider">
-<div class="cylinder"></div>
-<div class="slides">
-{% assign index = 0 %}
-{% for topic in collections.topics %}
-<div id="slide-{{ index }}" class="w3-container">
-<a href="{{ topic.url| url }}">
-<h3>{{ topic.data.title }}</h3>
-<p class="w3-margin">{{ topic.data.brief|safe }}</p>
-</a>
-</div>
-{% assign index = index| plus: 1 %}
-{% endfor %}
-</div>
-</div>
+{% assign roll = collections.topics %}
+{% include slider, roll: roll %}
 
 Scripts
 -------
 
-<div class="slider">
-<div class="cylinder"></div>
-<div class="slides">
-{% assign index = 0 %}
-{% for script in collections.scripts %}
-<div id="slide-{{ index }}" class="w3-container">
-<a href="{{ script.url| url }}">
-<h3>{{ script.data.title }}</h3>
-<p class="w3-margin">{{ script.data.brief|safe }}</p>
-</a>
-</div>
-{% assign index = index| plus: 1 %}
-{% endfor %}
-</div>
-</div>
+{% assign roll = collections.scripts %}
+{% include slider, roll: roll %}
 
 Questions
 ---------
 
-<div class="slider">
-<div class="cylinder"></div>
-<div class="slides">
-{% assign index = 0 %}
-{% for question in collections.questions %}
-<div id="slide-{{ index }}" class="w3-container">
-<a href="{{ question.url| url }}">
-<h3>{{ question.data.title }}</h3>
-<p class="w3-margin">{{ question.data.brief|safe }}</p>
-</a>
-</div>
-{% assign index = index| plus: 1 %}
-{% endfor %}
-</div>
-</div>
+{% assign roll = collections.questions %}
+{% include slider, roll: roll %}
