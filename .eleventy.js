@@ -1,5 +1,10 @@
 const CleanCSS = require("clean-css");
 
+function sortByOrder(values) {
+    let vals = [...values]; // this *seems* to prevent collection mutation...
+    return vals.sort((a, b) => Math.sign(a.data.order - b.data.order));
+}
+
 module.exports = function(eleventyConfig) {
   // Customized Markdown Export.
   let markdownIt = require("markdown-it");
@@ -15,6 +20,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("cssmin", function(code) {
     return new CleanCSS({}).minify(code).styles;
   });
+
+  // Sort collections by an "order" field
+  eleventyConfig.addFilter("sortByOrder", sortByOrder);
 
   return eleventyConfig;
 };

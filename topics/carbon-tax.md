@@ -2,6 +2,7 @@
 title: Carbon Tax
 layout: default
 tags: topics
+order: 0
 brief: It would have worked.  It could still work.  If you believe in markets and you believe in climate change, you should believe in it.
 ---
 

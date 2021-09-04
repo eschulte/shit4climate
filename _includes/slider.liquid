@@ -1,8 +1,10 @@
+<!-- -*- mode:mhtml -*- -->
 <div class="slider">
 <div class="cylinder"></div>
 <div class="slides">
 {% assign index = 0 %}
-{% for piece in roll %}
+{% assign sorted = roll | sortByOrder %}
+{% for piece in sorted %}
 <a href="{{ piece.url| url }}">
 <div id="slide-{{ index }}" class="w3-container">
 <h3>{{ piece.data.title }}</h3>
