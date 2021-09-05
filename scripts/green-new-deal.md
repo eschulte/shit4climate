@@ -1,7 +1,7 @@
 ---
 title: Support a Green New Deal
 layout: script
-brief: HR109 to transition to 
+brief: HR109 Recognizing the duty of the Federal Government to create a Green New Deal.
 order: 0
 tags: scripts
 ---
