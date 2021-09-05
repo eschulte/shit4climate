@@ -31,14 +31,15 @@ module.exports = function(eleventyConfig) {
       return code;
     }
 
-    eleventyConfig.addPassthroughCopy("favicon.ico");
-    eleventyConfig.addPassthroughCopy("apple-touch-icon.png");
-
     return minified.code;
   });
 
   // Sort collections by an "order" field
   eleventyConfig.addFilter("sortByOrder", sortByOrder);
+
+  // Copy through the icons
+  eleventyConfig.addPassthroughCopy("favicon.ico");
+  eleventyConfig.addPassthroughCopy("apple-touch-icon.png");
 
   return eleventyConfig;
 };
