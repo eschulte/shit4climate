@@ -11,6 +11,8 @@
     (cl-yaml:parse (file-to-string "_submodules/legislators/legislators-current.yaml"))
   :test #'equalp)
 
+
+;;; National representatives
 (defun senatorp (legislator)
   (string= "sen" (key :type (lastcar (key :terms legislator)))))
 
@@ -76,6 +78,38 @@
            :test #'equalp)
           (reverse failures)))
 
+
+;;; State representatives
+(defun state-district (legislator)
+  (key :district (first (key :roles legislator))))
+
+(defun state-phones (legislator)
+  (mapcar {key :voice} (key :contact_details legislator)))
+
+(defun state-name (legislator)
+  (key :name legislator))
+
+(defvar state-representatives
+  ;; Each element is '(state name district (list phone))
+  (mappend
+   (op (let ((state (lastcar (pathname-directory _1))))
+         (mapcar [«list (constantly state) #'state-name #'state-district #'state-phones»
+                  #'cl-yaml:parse #'file-to-string]
+                 (directory-files (merge-pathnames-as-directory _1 "legislature/")))))
+   (directory (directory-wildcard "_submodules/openstates/people/data/"))))
+
+(defvar state-by-zip
+  ;; Each element is '(zip (list (state name district (list phone))))
+  (mapcar (lambda (zip)
+            (cons (third zip)
+                  (remove-if-not (op (and (string= (string-downcase (second zip)) (first _1))
+                                          (string= (string-left-trim "0" (first zip)) (third _1))))
+                                 state-zips)))
+          (cdr zip-districts)))
+
+
+;;; Write out the results.
+
 (let ((by-zip (by-zip senators)))
   (with-open-file (out "_data/senator_zips.json" :direction :output :if-exists :supersede)
     (format out "[~:{[~s,[~s,~s]],~%~}" (butlast by-zip))
@@ -85,3 +119,15 @@
   (with-open-file (out "_data/representative_zips.json" :direction :output :if-exists :supersede)
     (format out "{~:{~s:[~s,~s],~%~}~%" (butlast by-zip))
     (format out "~:{~s:[~s,~s]~}}~%" (last by-zip))))
+
+(let ((by-zip
+       (mappend
+        (lambda (row)
+          (remove nil
+                  (mapcar (op (when (first (fourth _1))
+                                (list (car row) (first (fourth _1)) (second _1))))
+                          (cdr row))))
+        state-by-zip)))
+  (with-open-file (out "_data/state_rep_zips.json" :direction :output :if-exists :supersede)
+    (format out "[~:{[~s,[~s,~s]],~%~}" (butlast by-zip))
+    (format out "~:{[~s,[~s,~s]]~}]~%" (last by-zip))))

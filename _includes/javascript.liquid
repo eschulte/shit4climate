@@ -1,6 +1,7 @@
 //                                               -*- mode:javascript -*-
 
 // TODO: Still missing some, e.g. 15232.
+const state_rep_zips = {{ state_rep_zips }};
 const senator_zips = {{ senator_zips }};
 const representative_zips = {{ representative_zips }};
 
@@ -25,14 +26,12 @@ function zip_key_press(){
     senator_zips.filter(e => e[0] == partial_zip).forEach(e => {
       call_by_zip.innerHTML += "Call Senator <b>"+e[1][1]+"</b> at</br><a href=\"tel:+1"+e[1][0]+"\">"+e[1][0]+"</a>.</br>"
     })
-    if(senator_zips[partial_zip]){
-      // TODO: Instead map over adding every one.
-      var phone = senator_zips[partial_zip][0]
-      var name = senator_zips[partial_zip][1]
-      
-    } else {
-      call_by_zip.innerHTML = "No senator found for postal code <b>"+partial_zip+"</b>!";
-    }
+    // State Representative
+    var call_by_zip = document.getElementById("call-state-representative-by-zip");
+    call_by_zip.innerHTML = ""
+    state_rep_zips.filter(e => e[0] == partial_zip).forEach(e => {
+      call_by_zip.innerHTML += "Call State Representative <b>"+e[1][1]+"</b> at</br><a href=\"tel:+1"+e[1][0]+"\">"+e[1][0]+"</a>.</br>"
+    })
   }
   if(partial_zip.length < 5){
     document.getElementById("call-representative-by-zip").innerHTML = "";

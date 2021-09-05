@@ -4,3 +4,6 @@
 [submodule "_data/zipcodes"]
 	path = _submodules/zipcodes
 	url = https://github.com/OpenSourceActivismTech/us-zipcodes-congress.git
+[submodule "_submodules/openstates/people"]
+	path = _submodules/openstates/people
+	url = https://github.com/openstates/people.git
