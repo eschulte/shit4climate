@@ -1,4 +1,5 @@
 const CleanCSS = require("clean-css");
+const UglifyJS = require("uglify-js");
 
 function sortByOrder(values) {
     let vals = [...values]; // this *seems* to prevent collection mutation...
@@ -20,6 +21,17 @@ module.exports = function(eleventyConfig) {
   // clean-css
   eleventyConfig.addFilter("cssmin", function(code) {
     return new CleanCSS({}).minify(code).styles;
+  });
+
+  // Uglify-JS
+  eleventyConfig.addFilter("jsmin", function(code) {
+    let minified = UglifyJS.minify(code);
+    if( minified.error ) {
+      console.log("UglifyJS error: ", minified.error);
+      return code;
+    }
+
+    return minified.code;
   });
 
   // Sort collections by an "order" field

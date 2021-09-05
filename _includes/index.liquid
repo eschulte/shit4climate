@@ -29,6 +29,9 @@
     {% include bottom %}
   </body>
   <script>
+    {% capture js %}
     {% include javascript %}
+    {% endcapture %}
+    {{ js | jsmin | safe }}
   </script>
 </html>
