@@ -7,3 +7,4 @@
 [submodule "_submodules/openstates/people"]
 	path = _submodules/openstates/people
 	url = https://github.com/openstates/people.git
+	ignore = dirty
