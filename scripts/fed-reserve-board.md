@@ -3,6 +3,7 @@ title: Green Members on the Fed. Board
 layout: script
 order: 1
 tags: scripts
+brief: The Fed. can impact climate change.
 ---
 
 > The **Senate** confirms new members of the federal reserve board.
