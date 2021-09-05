@@ -5,4 +5,5 @@ order: 1
 tags: questions
 ---
 
-Does that impact your ability to address this issue?
+If so, does that impact your ability to bring our economy to zero
+carbon emissions?
