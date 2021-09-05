@@ -2,7 +2,7 @@
 title: Atlantic Meridional Overturning Circulation (AMOC)
 layout: default
 tags: topics
-order: 3
+order: 1
 brief: What?  The jet stream, and there's a chance it could break down.
 ---
 
