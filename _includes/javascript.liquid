@@ -1,39 +1,41 @@
 //                                               -*- mode:javascript -*-
 
 // TODO: Still missing some, e.g. 15232.
-const state_rep_zips = {{ state_rep_zips }};
-const senator_zips = {{ senator_zips }};
-const representative_zips = {{ representative_zips }};
+const stateDistrictRepresentative = {{ stateDistrictRepresentative }};
+const stateDistrictStateRepresentative = {{ stateDistrictstateRepresentative }};
+const stateSenator = {{ stateSenator }};
+const zipStateDistrict = {{ zipStateDistrict }};
+
+function populate_match(element, name, representatives){
+  element.innerHTML = ""
+  representatives.forEach(e => {
+    element.innerHTML += "Call "+name+" <b>"+e[1]+"</b> at</br><a href=\"tel:+1"+e[0]+"\">"+e[0]+"</a>.</br>"
+  })
+}
 
 function zip_key_press(){
   var zip_element = document.getElementById("postal-code");
   var partial_zip = zip_element.value;
 
   if(partial_zip.length >= 5){
-    // Representative
-    var call_by_zip = document.getElementById("call-representative-by-zip");
-    if(representative_zips[partial_zip]){
-      // TODO: Instead map over adding every one.
-      var phone = representative_zips[partial_zip][0]
-      var name = representative_zips[partial_zip][1]
-      call_by_zip.innerHTML = "Call Representative <b>"+name+"</b> at</br><a href=\"tel:+1"+phone+"\">"+phone+"</a>."
+    var match = zipStateDistrict[partial_zip];
+    console.log("MATCH:"+match)
+    if(match){
+      var stateDistrict = match[0]+match[1];
+      console.log(stateDistrict)
+      populate_match(document.getElementById("call-senator-by-zip"),
+                     "Senator", stateSenator[match[0]])
+      populate_match(document.getElementById("call-representative-by-zip"),
+                     "Representative", stateDistrictRepresentative[stateDistrict])
+      populate_match(document.getElementById("call-state-representative-by-zip"),
+                     "State Representative", stateDistrictStateRepresentative[stateDistrict])
+
     } else {
-      call_by_zip.innerHTML = "No representative found for postal code <b>"+partial_zip+"</b>!";
+      document.getElementById("call-representative-by-zip").innerHTML = "No representatives found for <b>"+partial_zip+"</b>.";
+      document.getElementById("call-senator-by-zip").innerHTML = "";
+      document.getElementById("call-state-representative-by-zip").innerHTML = "";
     }
-    // Senator
-    var call_by_zip = document.getElementById("call-senator-by-zip");
-    call_by_zip.innerHTML = ""
-    senator_zips.filter(e => e[0] == partial_zip).forEach(e => {
-      call_by_zip.innerHTML += "Call Senator <b>"+e[1][1]+"</b> at</br><a href=\"tel:+1"+e[1][0]+"\">"+e[1][0]+"</a>.</br>"
-    })
-    // State Representative
-    var call_by_zip = document.getElementById("call-state-representative-by-zip");
-    call_by_zip.innerHTML = ""
-    state_rep_zips.filter(e => e[0] == partial_zip).forEach(e => {
-      call_by_zip.innerHTML += "Call State Representative <b>"+e[1][1]+"</b> at</br><a href=\"tel:+1"+e[1][0]+"\">"+e[1][0]+"</a>.</br>"
-    })
-  }
-  if(partial_zip.length < 5){
+  } else {
     document.getElementById("call-representative-by-zip").innerHTML = "";
     document.getElementById("call-senator-by-zip").innerHTML = "";
     document.getElementById("call-state-representative-by-zip").innerHTML = "";

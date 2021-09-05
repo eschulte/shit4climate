@@ -1,5 +1,5 @@
 (defpackage :update
-  (:use :gt/full :cl-csv :cl-yaml)
+  (:use :gt/full :cl-csv :cl-yaml :cl-json)
   (:shadowing-import-from :fset :filter))
 (in-package :update)
 (in-readtable :curry-compose-reader-macros)
@@ -12,32 +12,22 @@
   :test #'equalp)
 
 
-;;; National representatives
-(defun senatorp (legislator)
-  (string= "sen" (key :type (lastcar (key :terms legislator)))))
-
-(defun representativep (legislator)
-  (string= "rep" (key :type (lastcar (key :terms legislator)))))
-
-(define-constant senators
-    (remove-if-not #'senatorp legislators))
-
-(define-constant representatives
-    (remove-if-not #'representativep legislators))
-
+;;; Zip codes
 (define-constant zip-districts
-    (cl-csv:read-csv (file-to-string "_submodules/zipcodes/zccd.csv"))
+    (cdr (cl-csv:read-csv (file-to-string "_submodules/zipcodes/zccd.csv")))
   :test #'equalp)
 
-(define-constant zips-by-state
-    (reduce (lambda (acc row)
-              (destructuring-bind (state-fips state-abbr zcta cd) row
-                (declare (ignorable state-fips cd))
-                (pushnew zcta (aget state-abbr acc :test #'string=)))
-              acc)
-            (cdr zip-districts) :initial-value '())
-  :test #'equalp)
+(defvar zip-to-state-district
+  (let ((hash (make-hash-table :test 'equalp)))
+    (mapc (lambda (row)
+            (destructuring-bind (state-fips state-abbr zcta cd) row
+              (declare (ignorable state-fips))
+              (setf (gethash zcta hash) (list state-abbr cd))))
+          zip-districts)
+    hash))
 
+
+;;; National representatives
 (defun key (item alist)
   (aget (string-downcase (symbol-name item)) alist :test #'string=))
 
@@ -53,81 +43,88 @@
 (defun name (legislator)
   (key :official_full (key :name legislator)))
 
-(defun zips (legislator)
-  (cond
-    ((senatorp legislator)
-     (aget (state legislator) zips-by-state :test #'string=))
-    ((representativep legislator)
-     (mapcar #'third
-             (remove-if-not (lambda (row)
-                              (and (string= (state legislator) (second row))
-                                   (string= (format nil "~d" (district legislator)) (fourth row))))
-                            zip-districts)))))
+(defun senatorp (legislator)
+  (string= "sen" (key :type (lastcar (key :terms legislator)))))
 
-(defun by-zip (senators-or-representatives &aux failures)
-  (values (remove-duplicates
-           (mappend (lambda (rep)
-                      (if-let ((zips (zips rep))
-                               (phone (phone rep))
-                               (name (name rep)))
-                        (mapcar {list _ phone name} zips)
-                        (prog1 nil
-                          (warn "Missing information for ~s" (list zips phone name))
-                          (push (list zips phone name) failures))))
-                    senators-or-representatives)
-           :test #'equalp)
-          (reverse failures)))
+(defun representativep (legislator)
+  (string= "rep" (key :type (lastcar (key :terms legislator)))))
+
+(define-constant senators
+    (remove-if-not #'senatorp legislators)
+  :test #'equalp)
+
+(define-constant representatives
+    (remove-if-not #'representativep legislators)
+  :test #'equalp)
+
+(defvar state-to-senator
+  (let ((hash (make-hash-table :test 'equalp)))
+    (mapc (lambda (senator)
+            (if (gethash (state senator) hash)
+                (push (list (phone senator) (name senator))
+                      (gethash (state senator) hash))
+                (setf (gethash (state senator) hash)
+                      (list (list (phone senator) (name senator))))))
+          senators)
+    hash))
+
+(defvar state-district-to-representative
+  (let ((hash (make-hash-table :test 'equalp)))
+    (mapc (lambda (rep)
+            (let ((state-district (format nil "~a~a" (state rep) (district rep))))
+              (if (gethash state-district hash)
+                  (push (list (phone rep) (name rep))
+                        (gethash state-district hash))
+                  (setf (gethash state-district hash)
+                        (list (list (phone rep) (name rep)))))))
+          representatives)
+    hash))
 
 
 ;;; State representatives
 (defun state-district (legislator)
   (key :district (first (key :roles legislator))))
 
-(defun state-phones (legislator)
-  (mapcar {key :voice} (key :contact_details legislator)))
+(defun state-phone (legislator)
+  (first (mapcar {key :voice} (key :contact_details legislator))))
 
 (defun state-name (legislator)
   (key :name legislator))
 
-(defvar state-representatives
+(defvar state-district-to-state-representative
   ;; Each element is '(state name district (list phone))
-  (mappend
-   (op (let ((state (lastcar (pathname-directory _1))))
-         (mapcar [«list (constantly state) #'state-name #'state-district #'state-phones»
-                  #'cl-yaml:parse #'file-to-string]
-                 (directory-files (merge-pathnames-as-directory _1 "legislature/")))))
-   (directory (directory-wildcard "_submodules/openstates/people/data/"))))
-
-(defvar state-by-zip
-  ;; Each element is '(zip (list (state name district (list phone))))
-  (mapcar (lambda (zip)
-            (cons (third zip)
-                  (remove-if-not (op (and (string= (string-downcase (second zip)) (first _1))
-                                          (string= (string-left-trim "0" (first zip)) (third _1))))
-                                 state-zips)))
-          (cdr zip-districts)))
+  (flet ((state-and-district (state rep)
+           (format nil "~a~a" state (state-district rep))))
+    (let ((hash (make-hash-table :test 'equalp)))
+      (mapc
+       (lambda (state-directory)
+         (let ((state (string-upcase (lastcar (pathname-directory state-directory)))))
+           (mapc
+            (op (let* ((rep (parse (file-to-string _1)))
+                       (sd (state-and-district state rep)))
+                  (if (gethash sd hash)
+                      (push (list (state-phone rep) (state-name rep))
+                            (gethash sd hash))
+                      (setf (gethash sd hash)
+                            (list (list (state-phone rep) (state-name rep)))))))
+            (directory-files (merge-pathnames-as-directory state-directory "legislature/")))))
+       (directory (directory-wildcard "_submodules/openstates/people/data/")))
+      hash)))
 
 
 ;;; Write out the results.
+(with-open-file (out "_data/zipStateDistrict.json"
+                     :direction :output :if-exists :supersede)
+  (encode-json zip-to-state-district out))
 
-(let ((by-zip (by-zip senators)))
-  (with-open-file (out "_data/senator_zips.json" :direction :output :if-exists :supersede)
-    (format out "[~:{[~s,[~s,~s]],~%~}" (butlast by-zip))
-    (format out "~:{[~s,[~s,~s]]~}]~%" (last by-zip))))
+(with-open-file (out "_data/stateSenator.json"
+                     :direction :output :if-exists :supersede)
+  (encode-json state-to-senator out))
 
-(let ((by-zip (by-zip representatives)))
-  (with-open-file (out "_data/representative_zips.json" :direction :output :if-exists :supersede)
-    (format out "{~:{~s:[~s,~s],~%~}~%" (butlast by-zip))
-    (format out "~:{~s:[~s,~s]~}}~%" (last by-zip))))
+(with-open-file (out "_data/stateDistrictRepresentative.json"
+                     :direction :output :if-exists :supersede)
+  (encode-json state-district-to-representative out))
 
-(let ((by-zip
-       (mappend
-        (lambda (row)
-          (remove nil
-                  (mapcar (op (when (first (fourth _1))
-                                (list (car row) (first (fourth _1)) (second _1))))
-                          (cdr row))))
-        state-by-zip)))
-  (with-open-file (out "_data/state_rep_zips.json" :direction :output :if-exists :supersede)
-    (format out "[~:{[~s,[~s,~s]],~%~}" (butlast by-zip))
-    (format out "~:{[~s,[~s,~s]]~}]~%" (last by-zip))))
+(with-open-file (out "_data/stateDistrictstateRepresentative.json"
+                     :direction :output :if-exists :supersede)
+  (encode-json state-district-to-state-representative out))
