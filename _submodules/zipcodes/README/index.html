@@ -1,0 +1,33 @@
+<h1 id="us-zipcodes-to-congressional-districts" tabindex="-1">US Zipcodes to Congressional Districts</h1>
+<p>Mapping between US zipcode tabulation areas and Federal Congressional districts.</p>
+<h2 id="why-is-this-necessary%3F" tabindex="-1">Why is this necessary?</h2>
+<p>There are many commercial sources of zipcode data available, and some of them include congressional representatives. There are also several APIs to look up a congressperson based on an address, or a lat/lon point. However, phone based contact methods like <a href="https://github.com/spacedogXYZ/call-power">CallPower</a> require a fast and free way to match a person to their rep, ideally without requiring them to type in a full address. Thus, we still need zipcodes.</p>
+<h3 id="caveats" tabindex="-1">Caveats</h3>
+<ul>
+<li>Zipcodes are not area designations, they are linear routes designed for mail delivery. The US Census delineates boundaries with the <a href="https://www.census.gov/geo/reference/zcta/zcta_delin_anim.html">most frequently used</a> zipcode within an tract area, but they have not released an official zipcode to ZCTA map since 2000.</li>
+<li>Census ZCTAs are not an exact match to USPS zipcodes, because they are not produced for lightly populated areas. However 'in most instances the ZCTA code is the same as the ZIP Code for an area.' <a href="https://www.census.gov/geo/reference/zctas.html">US Census, 2015</a></li>
+<li>In 2000, the ZCTA delineation process excluded 10,068 ZIP codes, including 2,523 ZIP Codes that served specific companies or organizations with high volumes of mail and 6,419 ZIP Codes dedicated to Post Office (PO) Box and/or general delivery addresses. <a href="http://cber.cba.ua.edu/asdc/zip_zcta.html">ASDC 2010</a></li>
+<li>ZCTAs may span states and congressional districts. 'Nearly 15 percent of all ZIP codes cross congressional district boundaries.' <a href="https://www.zipinfo.com/products/cdz/cdz.htm">ZipInfo</a> 'There are 153 ZIP Codes in more than one state.' <a href="https://www.census.gov/population/www/documentation/twps0007/twps0007.html">US Census, 1994</a></li>
+<li>If you have the ability to look up districts from a full address or zip+4, <a href="https://sunlightfoundation.com/2012/01/19/dont-use-zipcodes/">you should</a>. If you are still interested in matching zipcode to US Congressional District, read on.</li>
+</ul>
+<h2 id="how-does-this-work%3F" tabindex="-1">How does this work?</h2>
+<p>We start with the most recent Census mapping for the 115th Congress, which includes redistricting in 2016 for FL, MN, NC and VA. It does not however include data for states and territories with at-large representation (AK, DE, MT, ND, SD, VT, WY, PR, and DC). We  add all available ZCTAs for those states as well at the US Minor Outlying Islands, using 2010 data. This is unfortunately the latest available. We de-duplicate this data, ensuring not to alter ZCTAs that span state lines. We also clean it, to remove unsightly <code>null</code> strings, and obviously incorrect values in Colorado that start with <code>000</code>.</p>
+<p>We are left with a reasonably clean dataset. When tested against older publically available ones from the <a href="https://sunlightlabs.github.io/congress/#zip-codes-to-congressional-districts%5D">Sunlight Foundation</a> (<code>RIP</code>) and <a href="https://github.com/18F/openFEC/blob/master/data/natl_zccd_delim.csv">18F</a>, we show that we are not missing any ZCTAs, and have updated 1079 out of 39435 to new congressional districts. Run <code>make test</code> to see exact changes.</p>
+<p>We have also included a crosswalk file <a href="https://www.huduser.gov/portal/datasets/usps_crosswalk.html#codebook">sourced from HUD</a>, parsed from Excel and split to match the format of the above file. This may be more complete, as it is derived from in the quarterly <a href="https://www.huduser.gov/portal/datasets/usps.html">USPS Vacancy Data</a> and last updated in September 2020. It is available only for government entities and non-profit organizations related to the <a href="https://www.huduser.gov/portal/usps/sublicense_agreement.html#statedpurpose">&quot;stated purpose&quot;</a> of the HUD Sublicensing Agreement (<em>measuring and forecasting neighborhood changes, assessing neighborhood needs, and measuring/assessing various HUD programs</em>).</p>
+<h2 id="data-sources" tabindex="-1">Data Sources</h2>
+<ul>
+<li><a href="https://www.census.gov/geo/maps-data/data/gazetteer2016.html">2016 US Gazetteer</a></li>
+<li><a href="https://www.census.gov/geo/maps-data/data/zcta_rel_overview.html">2010 ZCTA Relationships</a></li>
+<li><a href="http://mcog.guam.gov/guam_zip_codes.html">Guam Zip Codes</a></li>
+<li><a href="https://www.huduser.gov/portal/datasets/usps_crosswalk.html#data">HUD USPS ZIP code Crosswalk</a></li>
+<li>Checked against state overlaps noted on <a href="http://gis.stackexchange.com/questions/53918/determining-which-us-zipcodes-map-to-more-than-one-state-or-more-than-one-city">GIS StackExchange</a></li>
+</ul>
+<h3 id="more-about-zip-codes-and-zcta" tabindex="-1">More about ZIP codes and ZCTA</h3>
+<ul>
+<li>US Census. How ZCTAs are Created <a href="https://www.census.gov/geo/reference/zctas.html">census.gov</a></li>
+<li>USPS Fun Facts <a href="https://about.usps.com/who-we-are/postal-facts/fun-facts.htm">USPS.com</a></li>
+<li>WTF Zipcodes <a href="https://github.com/iandees/wtf-zipcodes">Ian Dees</a></li>
+<li>Don't Use Zip Codes Unless You Have To. <a href="https://sunlightfoundation.com/2012/01/19/dont-use-zipcodes/">Tom Lee, Sunlight Foundation, 2012</a></li>
+<li>Using Zipcodes for epidemiological analysis can be harmful. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1762013/">Grubesic and Matisziw, 2006</a></li>
+<li>How ZIP codes nearly masked the lead problem in Flint. <a href="http://theconversation.com/how-zip-codes-nearly-masked-the-lead-problem-in-flint-65626">Sadler, 2016</a></li>
+</ul>
