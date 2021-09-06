@@ -5,7 +5,7 @@ title: Give a Shit for the Climate
 
 <h1 class="s4c-only-small-phones">Shit 4 Climate</h1>
 <h1 class="s4c-only-medium-phones">A Shit for Climate</h1>
-<h1 class="s4c-only-large-phones">Give a Shit for the Climate</h1>
+<h1 class="s4c-only-large-phones">Give a Shit for Climate</h1>
 
 Tired of spending your toilet time doom-scrolling environmental news?
 Put your phone (and all those depressing facts your friends don't want
