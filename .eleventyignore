@@ -1,4 +1,5 @@
-README
-submodules/
 node_modules/
 **/node_modules/
+
+_img/
+_submodules/
