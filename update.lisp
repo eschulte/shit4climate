@@ -11,6 +11,43 @@
     (cl-yaml:parse (file-to-string "_submodules/legislators/legislators-current.yaml"))
   :test #'equalp)
 
+;;; Methods on legislators
+(defun key (item alist)
+  (aget (string-downcase (symbol-name item)) alist :test #'string=))
+
+(defun name (legislator)
+  (let ((name (key :name legislator)))
+    (etypecase name
+      (string name)
+      (list (key :official_full (key :name legislator))))))
+
+(defun phone (legislator)
+  (if-let ((terms (key :terms legislator)))
+    (first (mapcar {key :voice} (key :contact_details legislator)))
+    (key :phone (lastcar (key :terms legislator)))))
+
+(defun email (legislator)
+  (key :email legislator))
+
+(defun contact (legislator)
+  (key :contact_form (lastcar (key :terms legislator))))
+
+(defun state (legislator)
+  (find-if #'stringp (mapcar {key :state} (key :terms legislator))
+           :from-end t))
+
+(defun district (legislator)
+  (if-let ((terms (key :terms legislator)))
+    (find-if #'numberp (mapcar {key :district} terms)
+             :from-end t)
+    (key :district (first (key :roles legislator)))))
+
+(defun senatorp (legislator)
+  (string= "sen" (key :type (lastcar (key :terms legislator)))))
+
+(defun representativep (legislator)
+  (string= "rep" (key :type (lastcar (key :terms legislator)))))
+
 
 ;;; Zip codes
 (define-constant zip-districts
@@ -28,27 +65,6 @@
 
 
 ;;; National representatives
-(defun key (item alist)
-  (aget (string-downcase (symbol-name item)) alist :test #'string=))
-
-(defun phone (legislator)
-  (key :phone (lastcar (key :terms legislator))))
-
-(defun district (legislator)
-  (find-if #'numberp (mapcar {key :district} (key :terms legislator)) :from-end t))
-
-(defun state (legislator)
-  (find-if #'stringp (mapcar {key :state} (key :terms legislator)) :from-end t))
-
-(defun name (legislator)
-  (key :official_full (key :name legislator)))
-
-(defun senatorp (legislator)
-  (string= "sen" (key :type (lastcar (key :terms legislator)))))
-
-(defun representativep (legislator)
-  (string= "rep" (key :type (lastcar (key :terms legislator)))))
-
 (define-constant senators
     (remove-if-not #'senatorp legislators)
   :test #'equalp)
@@ -82,19 +98,10 @@
 
 
 ;;; State representatives
-(defun state-district (legislator)
-  (key :district (first (key :roles legislator))))
-
-(defun state-phone (legislator)
-  (first (mapcar {key :voice} (key :contact_details legislator))))
-
-(defun state-name (legislator)
-  (key :name legislator))
-
 (defvar state-district-to-state-representative
   ;; Each element is '(state name district (list phone))
   (flet ((state-and-district (state rep)
-           (format nil "~a~a" state (state-district rep))))
+           (format nil "~a~a" state (district rep))))
     (let ((hash (make-hash-table :test 'equalp)))
       (mapc
        (lambda (state-directory)
@@ -103,10 +110,10 @@
             (op (let* ((rep (parse (file-to-string _1)))
                        (sd (state-and-district state rep)))
                   (if (gethash sd hash)
-                      (push (list (state-phone rep) (state-name rep))
+                      (push (list (phone rep) (name rep))
                             (gethash sd hash))
                       (setf (gethash sd hash)
-                            (list (list (state-phone rep) (state-name rep)))))))
+                            (list (list (phone rep) (name rep)))))))
             (directory-files (merge-pathnames-as-directory state-directory "legislature/")))))
        (directory (directory-wildcard "_submodules/openstates/people/data/")))
       hash)))
