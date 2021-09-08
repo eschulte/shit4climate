@@ -23,8 +23,8 @@
 
 (defun phone (legislator)
   (if-let ((terms (key :terms legislator)))
-    (first (mapcar {key :voice} (key :contact_details legislator)))
-    (key :phone (lastcar (key :terms legislator)))))
+    (key :phone (lastcar terms))
+    (first (mapcar {key :voice} (key :contact_details legislator)))))
 
 (defun email (legislator)
   (key :email legislator))
@@ -47,6 +47,12 @@
 
 (defun representativep (legislator)
   (string= "rep" (key :type (lastcar (key :terms legislator)))))
+
+(defun representative-details (legislator)
+  (list (name legislator)
+        (phone legislator)
+        (email legislator)
+        (contact legislator)))
 
 
 ;;; Zip codes
@@ -77,10 +83,10 @@
   (let ((hash (make-hash-table :test 'equalp)))
     (mapc (lambda (senator)
             (if (gethash (state senator) hash)
-                (push (list (phone senator) (name senator))
+                (push (representative-details senator)
                       (gethash (state senator) hash))
                 (setf (gethash (state senator) hash)
-                      (list (list (phone senator) (name senator))))))
+                      (list (representative-details senator)))))
           senators)
     hash))
 
@@ -89,10 +95,10 @@
     (mapc (lambda (rep)
             (let ((state-district (format nil "~a~a" (state rep) (district rep))))
               (if (gethash state-district hash)
-                  (push (list (phone rep) (name rep))
+                  (push (representative-details rep)
                         (gethash state-district hash))
                   (setf (gethash state-district hash)
-                        (list (list (phone rep) (name rep)))))))
+                        (list (representative-details rep))))))
           representatives)
     hash))
 
@@ -110,10 +116,10 @@
             (op (let* ((rep (parse (file-to-string _1)))
                        (sd (state-and-district state rep)))
                   (if (gethash sd hash)
-                      (push (list (phone rep) (name rep))
+                      (push (representative-details rep)
                             (gethash sd hash))
                       (setf (gethash sd hash)
-                            (list (list (phone rep) (name rep)))))))
+                            (list (representative-details rep))))))
             (directory-files (merge-pathnames-as-directory state-directory "legislature/")))))
        (directory (directory-wildcard "_submodules/openstates/people/data/")))
       hash)))
