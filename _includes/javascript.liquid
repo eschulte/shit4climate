@@ -6,10 +6,31 @@ const stateDistrictStateRepresentative = {{ stateDistrictstateRepresentative }};
 const stateSenator = {{ stateSenator }};
 const zipStateDistrict = {{ zipStateDistrict }};
 
-function populate_match(element, name, representatives){
+// Order defined in `representative-details' in update.lisp.
+function full_name(legislator){ return legislator[0] }
+function phone(legislator){ return legislator[1] }
+function email(legislator){ return legislator[2] }
+function contact(legislator){ return legislator[3] }
+
+function populate_match(element, position, representatives){
   element.innerHTML = ""
-  representatives.forEach(e => {
-    element.innerHTML += "Call "+name+" <b>"+e[1]+"</b> at</br><a href=\"tel:+1"+e[0]+"\">"+e[0]+"</a>.</br>"
+  representatives.forEach(rep => {
+    var phone_str = ""
+    var email_str = ""
+    var contact_str = ""
+    if(phone(rep)){
+      phone_str = " <a href=\"tel:+1"+phone(rep)+"\" title=\"call "+phone(rep)+"\"></a>"
+    }
+    if(email(rep)){
+      email_str = " <a href=\"mailto:"+email(rep)+"\" title=\"email "+email(rep)+"\"></a>"
+    }
+    if(contact(rep)){
+      contact_str = " <a class=\"external\" href=\""+contact(rep)+"\" title=\""+contact(rep)+"\"></a>"
+    }
+    element.innerHTML += "Contact "+position+" <b>"+full_name(rep)+"</b>:"+
+      phone_str+
+      email_str+
+      contact_str+"</br>"
   })
 }
 
@@ -24,14 +45,15 @@ function zip_key_press(){
       var stateDistrict = match[0]+match[1];
       console.log(stateDistrict)
       populate_match(document.getElementById("call-senator-by-zip"),
-                     "Senator", stateSenator[match[0]])
+                     "Sen.", stateSenator[match[0]])
       populate_match(document.getElementById("call-representative-by-zip"),
-                     "Representative", stateDistrictRepresentative[stateDistrict])
+                     "Rep.", stateDistrictRepresentative[stateDistrict])
       populate_match(document.getElementById("call-state-representative-by-zip"),
-                     "State Representative", stateDistrictStateRepresentative[stateDistrict])
+                     "State Rep.", stateDistrictStateRepresentative[stateDistrict])
 
     } else {
-      document.getElementById("call-representative-by-zip").innerHTML = "No representatives found for <b>"+partial_zip+"</b>.";
+      document.getElementById("call-representative-by-zip").innerHTML =
+        "No representatives found for <b>"+partial_zip+"</b>.";
       document.getElementById("call-senator-by-zip").innerHTML = "";
       document.getElementById("call-state-representative-by-zip").innerHTML = "";
     }

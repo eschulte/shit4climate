@@ -6,7 +6,19 @@ body{
 }
 
 a[href^="tel:"]:before {
-    content: "\260e";
+    /* content: "\1F4F1"; */
+    content: "\1F4DE";
+    margin-right: 10px;
+}
+
+a[href^="mailto:"]:before {
+    content: "\1F4E7";
+    margin-right: 10px;
+}
+
+a.external:before {
+    /* content: "\F08E"; */
+    content: "\1F4BB";
     margin-right: 10px;
 }
 
