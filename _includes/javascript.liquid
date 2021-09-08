@@ -19,13 +19,13 @@ function populate_match(element, position, representatives){
     var email_str = ""
     var contact_str = ""
     if(phone(rep)){
-      phone_str = " <a href=\"tel:+1"+phone(rep)+"\" title=\"call "+phone(rep)+"\"></a>"
+      phone_str = "<br/><a href=\"tel:+1"+phone(rep)+"\">"+phone(rep)+"</a>"
     }
     if(email(rep)){
-      email_str = " <a href=\"mailto:"+email(rep)+"\" title=\"email "+email(rep)+"\"></a>"
+      email_str = "<br/><a href=\"mailto:"+email(rep)+"\">"+email(rep)+"</a>"
     }
     if(contact(rep)){
-      contact_str = " <a class=\"external\" href=\""+contact(rep)+"\" title=\""+contact(rep)+"\"></a>"
+      contact_str = "<br/><a class=\"external\" href=\""+contact(rep)+"\">"+contact(rep)+"</a>"
     }
     element.innerHTML += "Contact "+position+" <b>"+full_name(rep)+"</b>:"+
       phone_str+
@@ -45,11 +45,11 @@ function zip_key_press(){
       var stateDistrict = match[0]+match[1];
       console.log(stateDistrict)
       populate_match(document.getElementById("call-senator-by-zip"),
-                     "Sen.", stateSenator[match[0]])
+                     "Senator", stateSenator[match[0]])
       populate_match(document.getElementById("call-representative-by-zip"),
-                     "Rep.", stateDistrictRepresentative[stateDistrict])
+                     "Representative", stateDistrictRepresentative[stateDistrict])
       populate_match(document.getElementById("call-state-representative-by-zip"),
-                     "State Rep.", stateDistrictStateRepresentative[stateDistrict])
+                     "State Representative", stateDistrictStateRepresentative[stateDistrict])
 
     } else {
       document.getElementById("call-representative-by-zip").innerHTML =
