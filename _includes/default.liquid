@@ -3,7 +3,7 @@
   <head>
     <title>{{ title }}</title>
     <meta charset="UTF-8">
-    <meta name="description" content="Climate change topic to discuss with your representative.">
+    <meta name="description" content="Script to discuss climate change with your representative.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="{{ "/favicon.ico" |url }}">
     <style>
@@ -22,10 +22,12 @@
       <button class="s4c-top-button" style="right:0;"><a href="{{ "/"|url }}">Home</a></button>
       <button class="s4c-top-button" style="right:0;top:2.5em;"><a href="{{ "/about"|url }}">about</a></button>
     </header>
-    <div class="w3-container" style="max-width:800px;margin:auto;margin-bottom:200px;">
-      <h1>{{ title }}</h1>
+    <div class="w3-container" style="max-width:800px;margin:auto;">
+      <h1 id="title">{{ title }}</h1>
       <div id="contact"></div>
+      <div id="content">
       {{ content | safe }}
+      </div>
     </div>
   </body>
   <script src="{{ "/zip-data.js"|url }}"></script>
@@ -34,5 +36,6 @@
     {% include outside-javascript %}
     {% endcapture %}
     {{ js | jsmin | safe }}
+    write_emails()
   </script>
 </html>
