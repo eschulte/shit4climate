@@ -1,6 +1,6 @@
 ---
 title: Support a Carbon Tax
-layout: default
+layout: script
 order: 0
 tags: scripts
 ---
