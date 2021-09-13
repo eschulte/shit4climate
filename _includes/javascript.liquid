@@ -1,11 +1,5 @@
 //                                               -*- mode:javascript -*-
 
-// TODO: Still missing some, e.g. 15232.
-const stateDistrictRepresentative = {{ stateDistrictRepresentative }};
-const stateDistrictStateRepresentative = {{ stateDistrictstateRepresentative }};
-const stateSenator = {{ stateSenator }};
-const zipStateDistrict = {{ zipStateDistrict }};
-
 // Order defined in `representative-details' in update.lisp.
 function full_name(legislator){ return legislator[0] }
 function phone(legislator){ return legislator[1] }
@@ -42,6 +36,10 @@ function zip_key_press(){
   var partial_zip = zip_element.value;
 
   if(partial_zip.length >= 5){
+
+    // Storage.
+    localStorage.setItem('zip', partial_zip);
+
     var match = zipStateDistrict[partial_zip];
     console.log("MATCH:"+match)
     if(match){
@@ -61,8 +59,20 @@ function zip_key_press(){
       document.getElementById("call-state-representative-by-zip").innerHTML = "";
     }
   } else {
+
+    // Storage.
+    localStorage.removeItem('zip');
+
     document.getElementById("call-representative-by-zip").innerHTML = "";
     document.getElementById("call-senator-by-zip").innerHTML = "";
     document.getElementById("call-state-representative-by-zip").innerHTML = "";
+  }
+}
+
+function populate_zip(){
+  if(localStorage.getItem('zip')){
+    var zip_element = document.getElementById("postal-code");
+    zip_element.value = localStorage.getItem('zip');
+    zip_key_press();
   }
 }

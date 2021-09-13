@@ -23,9 +23,15 @@
     </header>
     <div class="w3-container" style="max-width:800px;margin:auto;margin-bottom:200px;">
       <h1>{{ title }}</h1>
+      <div id="contact"></div>
       {{ content | safe }}
     </div>
   </body>
+  <script src="{{ "/zip-data.js"|url }}"></script>
   <script>
+    {% capture js %}
+    {% include outside-javascript %}
+    {% endcapture %}
+    {{ js | jsmin | safe }}
   </script>
 </html>

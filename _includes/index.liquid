@@ -19,7 +19,7 @@
       {{ css | cssmin | safe }}
     </style>
   </head>
-  <body>
+  <body onload="populate_zip()">
     <header>
       {% include top %}
       <button class="s4c-top-button" style="right:0;"><a href="{{ "/about"|url }}">about</a></button>
@@ -29,6 +29,7 @@
     </div>
     {% include bottom %}
   </body>
+  <script src="{{ "/zip-data.js"|url }}"></script>
   <script>
     {% capture js %}
     {% include javascript %}

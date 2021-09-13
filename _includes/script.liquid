@@ -15,7 +15,7 @@
       {{ css | cssmin | safe }}
     </style>
   </head>
-  <body class="s4c-fill">
+  <body class="s4c-fill" style="background-image: linear-gradient(skyblue, skyblue, gray);">
     <header>
       {% include top %}
       <div class="w3-bar w3-card s4c-blue">
@@ -23,15 +23,24 @@
       </div>
     </header>
     <div class="w3-container" style="max-width:800px;margin:auto;">
-      <h1>{{ title }}</h1>
+      <h1 id="title">{{ title }}</h1>
+      <div id="contact"></div>
       <blockquote>
         <b>NOTE:</b> First identify yourself as a
         <i>constituent</i> and give your <b>name</b>, <b>address</b>,
         and <b>phone number</b>.
       </blockquote>
+      <div id="content">
       {{ content | safe }}
+      </div>
     </div>
   </body>
+  <script src="{{ "/zip-data.js"|url }}"></script>
   <script>
+    {% capture js %}
+    {% include outside-javascript %}
+    {% endcapture %}
+    {{ js | jsmin | safe }}
+    write_emails()
   </script>
 </html>
