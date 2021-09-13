@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="description" content="Script to discuss climate change with your representative.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{{ "/favicon.ico" |url }}">
     <style>
       {% capture css %}
       {% include w3 %}
@@ -18,9 +19,8 @@
   <body class="s4c-fill" style="background-image: linear-gradient(skyblue, skyblue, gray);">
     <header>
       {% include top %}
-      <div class="w3-bar w3-card s4c-blue">
-        <a href="{{ "/" | url }}" class="w3-bar-item w3-button w3-wide">Home</a>
-      </div>
+      <button class="s4c-top-button" style="right:0;"><a href="{{ "/"|url }}">Home</a></button>
+      <button class="s4c-top-button" style="right:0;top:2.5em;"><a href="{{ "/about"|url }}">about</a></button>
     </header>
     <div class="w3-container" style="max-width:800px;margin:auto;">
       <h1 id="title">{{ title }}</h1>
