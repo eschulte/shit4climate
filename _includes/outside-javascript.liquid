@@ -19,6 +19,9 @@ function write_emails(){
       body_dom.removeChild(e)
     }
   })
+  Array.from(body_dom.getElementsByTagName("A")).forEach(e => {
+    e.text += " ("+e.href+")"
+  })
   let body = body_dom.textContent;
 
   Array.from(document.getElementsByClassName("email-link")).forEach(link => {
