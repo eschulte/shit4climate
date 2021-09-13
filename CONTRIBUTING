@@ -10,3 +10,17 @@ Public License version 3 (see LICENSE).  All contributions to this
 project will be copyright Eric Schulte and released under the GPLv3.
 By submitting a pull request, you are agreeing to comply with this
 waiver of copyright interest.
+
+## Adding Content
+
+See the YAML top-matter at the top of the markdown already under
+`topics/`, `scripts/`, and `questions/`.  New entries should also
+include the same top-matter entries.
+
+Try to strike a balance between pulling out some interesting subtopics
+and brevity.
+
+Note that the text of entries are used to pre-populate email subjects
+and bodies.  Before the email body is generated all `blockcomment`s
+are removed from the page text.  This make `blockcomment`s the
+appropriate place to put links to extra resources or asides.
