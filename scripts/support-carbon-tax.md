@@ -5,7 +5,7 @@ order: 0
 tags: scripts
 ---
 
-I'm calling to ask if you will commit to supporting a direct tax on
+I'm asking if you will commit to supporting a direct tax on
 carbon emissions.  A direct carbon tax is the simplest and likely most
 cost effective way to force our economic system to deal with climate
 change.  By leveraging the power of markets and the economic

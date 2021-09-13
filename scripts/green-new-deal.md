@@ -6,11 +6,11 @@ order: 0
 tags: scripts
 ---
 
-I'm calling to ask if you will commit to supporting the Green New Deal
--- House Resolution 109.  We need a bill of this scope to fight
-climate change at the scale that scientists know is required to
-preserve anything close to a livable world, country, state, and city
-for future generations of Americans and Humanity.
+I'm asking if you will commit to supporting the Green New Deal, House
+Resolution 109.  We need a bill of this scope to fight climate change
+at the scale that scientists know is required to preserve anything
+close to a livable world, country, state, and city for future
+generations of Americans and Humanity.
 
 This crisis demands immediate action.  Will you commit to making the
 advancement of this legislation a top priority?

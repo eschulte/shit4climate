@@ -14,10 +14,10 @@ brief: The Fed. can impact climate change.
 
 [about-the-fed/structure-and-functions]: https://www.federalreserveeducation.org/about-the-fed/structure-and-functions
 
-I'm calling to ask if you will commit to only confirming new members
-to the federal reserve board who have a history of directing monetary
-policy to address climate change.  Examples of excellent candidates
-include: [Sarah Bloom Raskin][], and [Lisa Cook][].
+I'm asking if you will commit to only confirming new members to the
+federal reserve board who have a history of directing monetary policy
+to address climate change.  Examples of excellent candidates include:
+[Sarah Bloom Raskin][], and [Lisa Cook][].
 
 [Sarah Bloom Raskin]: https://en.wikipedia.org/wiki/Sarah_Bloom_Raskin
 [Lisa Cook]: https://en.wikipedia.org/wiki/Lisa_D._Cook
