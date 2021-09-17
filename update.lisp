@@ -124,20 +124,26 @@
        (directory (directory-wildcard "_submodules/openstates/people/data/")))
       hash)))
 
+(defun zip-hash (zip)
+  (when-let (pair (gethash zip zip-to-state-district))
+    (destructuring-bind (state district) pair
+      (let ((hash (make-hash-table :test 'equalp))
+            (state-district (concatenate 'string state district)))
+        (setf (gethash "sen" hash)
+              (gethash state state-to-senator))
+        (setf (gethash "rep" hash)
+              (gethash state-district state-district-to-representative))
+        (setf (gethash "state" hash)
+              (gethash state-district state-district-to-state-representative))
+        hash))))
+
 
 ;;; Write out the results.
-(with-open-file (out "_data/zipStateDistrict.json"
-                     :direction :output :if-exists :supersede)
-  (encode-json zip-to-state-district out))
-
-(with-open-file (out "_data/stateSenator.json"
-                     :direction :output :if-exists :supersede)
-  (encode-json state-to-senator out))
-
-(with-open-file (out "_data/stateDistrictRepresentative.json"
-                     :direction :output :if-exists :supersede)
-  (encode-json state-district-to-representative out))
-
-(with-open-file (out "_data/stateDistrictstateRepresentative.json"
-                     :direction :output :if-exists :supersede)
-  (encode-json state-district-to-state-representative out))
+(mapc (lambda (zip)
+        (with-open-file (out (make-pathname :directory
+                                            '(:relative "zip-data")
+                                            :name zip
+                                            :type "json")
+                             :direction :output :if-exists :supersede)
+          (encode-json (zip-hash zip) out)))
+      (hash-table-keys zip-to-state-district))

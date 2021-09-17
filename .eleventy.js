@@ -41,6 +41,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("favicon.ico");
   eleventyConfig.addPassthroughCopy("apple-touch-icon.png");
   eleventyConfig.addPassthroughCopy("javascript.js");
+  eleventyConfig.addPassthroughCopy("zip-data");
 
   return eleventyConfig;
 };

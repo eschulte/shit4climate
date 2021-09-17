@@ -13,19 +13,20 @@ function contact(legislator){ return legislator[3] }
 // From https://stackoverflow.com/questions/12460378/how-to-get-json-from-url-in-javascript
 var remote_zip = function(zip, callback){
   var xhr = new XMLHttpRequest()
-  url = '/zip-data/'+zip
+  url = '/zip-data/'+zip+'.json'
   xhr.open('GET', url, true)
   xhr.responseType = 'json'
   xhr.onload = function() {
     var status = xhr.status
-    var by_zip = localStorage.getItem('by-zip')
+    var by_zip = JSON.parse(localStorage.getItem('by-zip'))
     if (status === 200) {
+      console.log('Responded 200 for '+url+' with '+xhr.response)
       by_zip[zip] = xhr.response
     } else {
       console.log('No JSON found for '+zip)
       by_zip[zip] = false
     }
-    localStorage.setItem('by-zip', by_zip)
+    localStorage.setItem('by-zip', JSON.stringify(by_zip))
     callback(by_zip[zip])
   }
   xhr.send()
@@ -36,7 +37,9 @@ function zip_data(zip, callback){
   var by_zip = localStorage.getItem('by-zip')
   if(! by_zip){
     by_zip = {}
-    localStorage.setItem('by-zip', by_zip)
+    localStorage.setItem('by-zip', JSON.stringify(by_zip))
+  } else {
+    by_zip = JSON.parse(by_zip)
   }
   if(by_zip.hasOwnProperty(zip)) {
     callback(by_zip[zip])
