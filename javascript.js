@@ -9,7 +9,7 @@ function contact(legislator){ return legislator[3] }
 // From https://stackoverflow.com/questions/12460378/how-to-get-json-from-url-in-javascript
 var remote_zip = function(zip, callback){
   var xhr = new XMLHttpRequest()
-  url = '/zip-data/'+zip[0]+'/'+zip+'.json'
+  url = '/zip-data/'+zip.slice(0,2)+'/'+zip+'.json'
   xhr.open('GET', url, true)
   xhr.responseType = 'json'
   xhr.onload = function() {
