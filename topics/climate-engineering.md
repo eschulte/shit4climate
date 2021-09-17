@@ -3,7 +3,7 @@ title: Climate Engineering
 layout: default
 tags: topics
 order: 1
-brief: TODO
+brief: Potentially our only hope.
 ---
 
 The wikipedia [Climate engineering][] page is informative.
