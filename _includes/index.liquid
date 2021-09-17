@@ -29,11 +29,5 @@
     </div>
     {% include bottom %}
   </body>
-  <script src="{{ "/zip-data.js"|url }}"></script>
-  <script>
-    {% capture js %}
-    {% include javascript %}
-    {% endcapture %}
-    {{ js | jsmin | safe }}
-  </script>
+  <script src="{{ "/javascript.js"|url }}"></script>
 </html>

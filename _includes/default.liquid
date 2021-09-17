@@ -16,7 +16,9 @@
       {{ css | cssmin | safe }}
     </style>
   </head>
-  <body class="s4c-fill" style="background-image: linear-gradient(skyblue, skyblue, gray);">
+  <body class="s4c-fill"
+        style="background-image: linear-gradient(skyblue, skyblue, gray);"
+        onload="outside_on_load()">
     <header>
       {% include top %}
       <button class="s4c-top-button" style="right:0;"><a href="{{ "/"|url }}">Home</a></button>
@@ -30,12 +32,5 @@
       </div>
     </div>
   </body>
-  <script src="{{ "/zip-data.js"|url }}"></script>
-  <script>
-    {% capture js %}
-    {% include outside-javascript %}
-    {% endcapture %}
-    {{ js | jsmin | safe }}
-    write_emails()
-  </script>
+  <script src="{{ "/javascript.js"|url }}"></script>
 </html>
