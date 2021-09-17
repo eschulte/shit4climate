@@ -10,7 +10,7 @@ Contents:
 
 ## About Shit4Climate
 
-Some ideas of born of aesthetics and some of need.  Shit4Climate is a
+Some ideas are born of aesthetics and some of need.  Shit4Climate is a
 child of the later.  Personal lifestyle changes will not save
 us.[^footprint] Aside from working to elect new representatives who
 appropriately prioritize climate change, our only hope is to influence
@@ -25,15 +25,17 @@ open an issue against the shit4climate GitHub repository here:
 [https://github.com/eschulte/shit4climate/issues][].
 
 If you'd like to suggest new content that's great!  Please read our
-[CONTRIBUTING][] guidelines and then either open an issue or open a
-GitHub pull request directly adding your content to the site:
+[CONTRIBUTING][] guidelines and then either drop your
+suggestion/content into an issue or open a GitHub pull request
+directly adding your content to the site:
 [https://github.com/eschulte/shit4climate/pulls][].
 
 ## Citations
 
-The representative telephone data was taken from the following sources
-which are all doing a huge public service by collecting, curating, and
-publishing data on our governmental representatives:
+The representative contact information was taken from the following
+sources which are all doing a huge public service by collecting,
+curating, and publishing data on our local, state, and national
+representatives:
 - https://github.com/unitedstates/congress-legislators
 - https://github.com/OpenSourceActivismTech/us-zipcodes-congress
 - https://github.com/openstates/people
