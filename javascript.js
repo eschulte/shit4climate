@@ -1,7 +1,3 @@
-// {% capture js %}
-// {% include javascript %}
-// {% endcapture %}
-// {{ js | jsmin | safe }}
 //                                               -*- mode:javascript -*-
 
 // Order defined in `representative-details' in update.lisp.
@@ -78,6 +74,7 @@ function zip_key_press(){
   var partial_zip = zip_element.value;
 
   if(partial_zip.length >= 5){
+    localStorage.setItem('zip', partial_zip)
     zip_data(partial_zip, data => {
       if(data){
         populate_match(document.getElementById("call-senator-by-zip"),
@@ -126,29 +123,25 @@ function write_emails(){
 function outside_on_load(){
   if(localStorage.getItem('zip')){
     const partial_zip = localStorage.getItem('zip');
-    var match = zipStateDistrict[partial_zip];
-    var stateDistrict = match[0]+match[1];
-    console.log("MATCH:"+stateDistrict);
-    element = document.getElementById("contact")
-
-    stateSenator[match[0]].
-      concat(stateDistrictRepresentative[stateDistrict]).
-      concat(stateDistrictStateRepresentative[stateDistrict]).
-      forEach(rep => {
-        var phone_str = ""
-        var email_str = ""
-        var contact_str = ""
-        if(phone(rep)){
-          phone_str = "<a href=\"tel:+1"+phone(rep)+"\" title=\" Call: "+phone(rep)+"\"></a> "
-        }
-        if(email(rep)){
-          email_str = "<a class=\"email-link\" id=\""+full_name(rep)+"\" href=\"mailto:"+email(rep)+"\" title=\" Email: "+email(rep)+"\"></a> "
-        }
-        if(contact(rep)){
-          contact_str = "<a class=\"external\" href=\""+contact(rep)+"\" title=\" Contact form: "+contact(rep)+"\"></a> "
-        }
-        element.innerHTML += "<b>"+full_name(rep)+"</b> at: "+phone_str+email_str+contact_str+"</br>"
-      })
+    zip_data(partial_zip, data => {
+      element = document.getElementById("contact")
+      data['sen'].concat(data['rep']).concat(data['state']).
+        forEach(rep => {
+          var phone_str = ""
+          var email_str = ""
+          var contact_str = ""
+          if(phone(rep)){
+            phone_str = "<a href=\"tel:+1"+phone(rep)+"\" title=\" Call: "+phone(rep)+"\"></a> "
+          }
+          if(email(rep)){
+            email_str = "<a class=\"email-link\" id=\""+full_name(rep)+"\" href=\"mailto:"+email(rep)+"\" title=\" Email: "+email(rep)+"\"></a> "
+          }
+          if(contact(rep)){
+            contact_str = "<a class=\"external\" href=\""+contact(rep)+"\" title=\" Contact form: "+contact(rep)+"\"></a> "
+          }
+          element.innerHTML += "<b>"+full_name(rep)+"</b> at: "+phone_str+email_str+contact_str+"</br>"
+        })
+    })
   }
   write_emails()
 }
