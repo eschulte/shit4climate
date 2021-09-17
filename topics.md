@@ -1,6 +1,6 @@
 ---
-layout: default
 title: Topics
+layout: meta
 ---
 
 {% assign roll = collections.topics %}

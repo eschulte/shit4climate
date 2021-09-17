@@ -1,6 +1,6 @@
 ---
-layout: default
 title: Questions
+layout: meta
 ---
 
 {% assign roll = collections.questions %}

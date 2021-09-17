@@ -1,6 +1,6 @@
 ---
-layout: default
 title: Scripts
+layout: meta
 ---
 
 {% assign roll = collections.scripts %}

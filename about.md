@@ -1,6 +1,6 @@
 ---
 title: About Shit4Climate
-layout: default
+layout: meta
 ---
 
 Contents:
