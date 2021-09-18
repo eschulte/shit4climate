@@ -36,8 +36,12 @@ be taking climate related preparatory actions including:
 - Force large banks to run climate stress tests.
 
 > Attribution: This topic comes pretty directly from listening to
-> [Felicia Wong][]'s interview on the Ezra Klein Show on 2021-09-03.
+> [Felicia Wong][]'s interview on the [Ezra Klein Show on 2021-09-03].
 > These are some of her suggestions from that interview.
+>
+> Also see [Ezra Klein's 2021-09-17 show with Adam Tooze][].
 
 [Felicia Wong]: https://rooseveltinstitute.org/authors/felicia-wong/
 [google green swan]: https://www.google.com/search?q=green+swan+climate+risk
+[Ezra Klein Show on 2021-09-03]: https://podcasts.apple.com/us/podcast/the-ezra-klein-show/id1548604447?i=1000534198926
+[Ezra Klein's 2021-09-17 show with Adam Tooze]: https://podcasts.apple.com/us/podcast/the-ezra-klein-show/id1548604447?i=1000535624450
