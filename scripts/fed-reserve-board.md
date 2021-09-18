@@ -25,9 +25,10 @@ to address climate change.  Examples of excellent candidates include:
 The Federal Reserve's mission is to keep our economy at full
 employment and protect our financial system.  The climate catastrophe
 we see unfolding around us will ripple through our financial system.
-It is core to the Federal Reserve's mission to ensure that our
-financial institutions are in shape to withstand these shocks.  The
-Fed. should be taking climate related preparatory actions including:
+See "green swan," I'm happy to [google green swan][] for you.  It is
+core to the Federal Reserve's mission to ensure that our financial
+institutions are in shape to withstand these shocks.  The Fed. should
+be taking climate related preparatory actions including:
 - Ensure banks to treat climate change as a structural risk
 - Ensure banks exposed to carbon producing companies are prepared to
   accept the losses expected in those sectors as the economy moves to
@@ -39,3 +40,4 @@ Fed. should be taking climate related preparatory actions including:
 > These are some of her suggestions from that interview.
 
 [Felicia Wong]: https://rooseveltinstitute.org/authors/felicia-wong/
+[google green swan]: https://www.google.com/search?q=green+swan+climate+risk
