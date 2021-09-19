@@ -7,6 +7,7 @@ Contents:
 - [About Shit4Climate](#about-shit4climate)
 - [Comments and Contributions](#comments-and-contributions)
 - [Citations](#citations)
+- [Summary Lists](#summary-lists)
 
 ## About Shit4Climate
 
@@ -48,3 +49,10 @@ representatives:
 [https://github.com/unitedstates/congress-legislators]: https://github.com/unitedstates/congress-legislators
 [https://github.com/OpenSourceActivismTech/us-zipcodes-congress]: https://github.com/OpenSourceActivismTech/us-zipcodes-congress
 [https://github.com/openstates/people]: https://github.com/openstates/people
+
+## Summary Lists
+
+- [Topics]({{ "/topics"|url }})
+- [Scripts]({{ "/scripts"|url }})
+- [Questions]({{ "/questions"|url }})
+- [Deniers]({{ "/deniers"|url }})
