@@ -3,7 +3,8 @@ title: Deniers
 layout: meta
 ---
 
-{% for denier in collections.denier %}
+{% assign sorted = collections.denier | sortByState %}
+{% for denier in sorted %}
 **[{{ denier.data.title }}: {{ denier.data.name }} of {{ denier.data.state }}]({{ denier.url|url }})**
 :   {{ denier.data.quote }}
 {% endfor %}

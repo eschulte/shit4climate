@@ -6,6 +6,11 @@ function sortByOrder(values) {
     return vals.sort((a, b) => Math.sign(a.data.order - b.data.order));
 }
 
+function sortByState(values) {
+    let vals = [...values]; // this *seems* to prevent collection mutation...
+    return vals.sort((a, b) => a.data.state.localeCompare(b.data.state));
+}
+
 module.exports = function(eleventyConfig) {
   // Customized Markdown Export.
   let markdownIt = require("markdown-it");
@@ -34,8 +39,9 @@ module.exports = function(eleventyConfig) {
     return minified.code;
   });
 
-  // Sort collections by an "order" field
+  // Sort collections by custom fields.
   eleventyConfig.addFilter("sortByOrder", sortByOrder);
+  eleventyConfig.addFilter("sortByState", sortByState);
 
   // Copy through the icons
   eleventyConfig.addPassthroughCopy("favicon.ico");
