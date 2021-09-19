@@ -65,7 +65,7 @@ span.dirty {
 }
 
 body.s4c-fill, html.s4c-fill {
-    min-height: max(100%, 1000px);
+    min-height: max(100vh, 1000px);
 }
 
 .footnotes {
@@ -251,8 +251,51 @@ blockquote {
     overflow:hidden;
 }
 
+.tp {
+    position: relative;
+    width: calc(min(800px, 85%) - 20px);
+    min-height: 140vh;
+    margin-top: 1em;
+    margin-left: calc(50% - min(400px, 42.5%));
+    padding:1em;
+    padding-bottom:125px;
+
+    background: white;
+    border-radius: 0 0 20px 20px;
+    background-image: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        #fff 2px,
+        #fff 6px
+    ), repeating-linear-gradient(
+        transparent,
+        transparent min(800px, 85vw),
+        #888 min(800px, 85vw),
+        #888 calc(min(800px, 85vw) + 3px)
+    );
+}
+
+/* From: https://www.py4u.net/discuss/1021347 */
+.tp:before, .tp:after {
+    content:'';
+    width:100%;
+    height:5px;
+    position:absolute;
+    bottom:100%;
+    left:0;
+    background-image: linear-gradient(135deg, transparent 66%, white 67%),
+                      linear-gradient(45deg, white 33%, gray 34%, transparent 44%);
+    background-position: -5px 0;
+    background-size: 10px 100%;
+    background-repeat:repeat-x;
+}
+
 /* Phone sizes. */
 @media (min-width:360px){ .s4c-only-small-phones{display:none!important}}
 @media (max-width:360px){ .s4c-only-medium-phones{display:none!important}}
 @media (min-width:424px){ .s4c-only-medium-phones{display:none!important}}
 @media (max-width:424px){ .s4c-only-large-phones{display:none!important}}
+
+#home { position: absolute; right:0; }
+#about { position: absolute; right:0; top:3.5em; }

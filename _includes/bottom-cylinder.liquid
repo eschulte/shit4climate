@@ -1,0 +1,36 @@
+/* -*- mode:css -*- */
+
+.cylinder {
+	position: fixed;
+        bottom: 0;
+        right: calc(50% - min(400px, 45%) + 10px);
+        z-index: 3;
+	overflow: hidden;
+	height: 125px;
+	width: min(800px, 90%);
+	border-radius: 20px/30px;
+	background-color: #eee;
+        border: gray solid 4px;
+}
+
+.cylinder:before {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 30px;
+	height: 125px;
+	border-radius: 20px/30px;
+        background-color: #94751f;
+	content: '';
+}
+
+.cylinder:after {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 30px;
+	height: 125px;
+	border-radius: 20px/30px;
+	background-color: #eee;
+	content: '';
+}

@@ -10,26 +10,25 @@
       {% capture css %}
       {% include w3 %}
       {% include s4c %}
-      {% include cloud %}
       {% include construction %}
+      {% include bottom-cylinder %}
       {% endcapture %}
       {{ css | cssmin | safe }}
     </style>
   </head>
-  <body class="s4c-fill"
-        style="background-image: linear-gradient(skyblue, skyblue, gray);"
-        onload="outside_on_load()">
+  <body class="s4c-fill" onload="outside_on_load()">
     <header>
       {% include top %}
-      <button class="s4c-top-button" style="right:0;"><a href="{{ "/"|url }}">Home</a></button>
-      <button class="s4c-top-button" style="right:0;top:2.5em;"><a href="{{ "/about"|url }}">about</a></button>
+      <button id="home" class="s4c-top-button"><a href="{{ "/"|url }}">Home</a></button>
+      <button id="about" class="s4c-top-button"><a href="{{ "/about"|url }}">about</a></button>
     </header>
-    <div class="w3-container w3-margin" style="max-width:800px;margin:auto;padding:1em;">
+    <div class="w3-container tp">
       <h1 id="title">{{ title }}</h1>
       <div id="contact"></div>
       <div id="content">
       {{ content | safe }}
       </div>
+      <div class="cylinder"></div>
     </div>
   </body>
   <script src="{{ "/javascript.js"|url }}"></script>

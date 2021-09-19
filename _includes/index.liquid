@@ -22,7 +22,7 @@
   <body onload="populate_zip()">
     <header>
       {% include top %}
-      <button class="s4c-top-button" style="right:0;"><a href="{{ "/about"|url }}">about</a></button>
+      <button id="home" class="s4c-top-button"><a href="{{ "/about"|url }}">about</a></button>
     </header>
     <div class="w3-container" style="max-width:800px;margin:auto;padding:1em;">
       {{ content | safe }}
