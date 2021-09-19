@@ -162,7 +162,7 @@ function outside_on_load(){
             contact_str = "<a class=\"external\" href=\""+contact(rep)+"\" title=\" Contact form: "+contact(rep)+"\"></a> "
           }
           if(denier(rep)){
-            denier_str = " (<a class=\"denier\" href=\"/deniers/"+denier(rep)+"\">DENIER</a>)"
+            denier_str = " <a class=\"denier\" href=\"/deniers/"+denier(rep)+"\">DENIER</a>"
           }
           element.innerHTML += "<b>"+full_name(rep)+"</b>"+denier_str+" at: "+phone_str+email_str+contact_str+"</br>"
         })
