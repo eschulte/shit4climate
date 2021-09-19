@@ -67,7 +67,7 @@ function populate_match(element, position, representatives){
     if(denier(rep)){
       denier_str = " <a class=\"denier\" href=\"/deniers/"+denier(rep)+"\">DENIER</a>"
     }
-    element.innerHTML += "Contact "+position+" <b>"+full_name(rep)+denier_str+"</b>:"+
+    element.innerHTML += "<span class=\"w3-hide-small\">Contact </span>"+position+" <b>"+full_name(rep)+denier_str+"</b>:"+
       phone_str+
       email_str+
       contact_str
@@ -135,6 +135,7 @@ function outside_on_load(){
           var phone_str = ""
           var email_str = ""
           var contact_str = ""
+          var denier_str = ""
           if(phone(rep)){
             phone_str = "<a href=\"tel:+1"+phone(rep)+"\" title=\" Call: "+phone(rep)+"\"></a> "
           }
@@ -144,7 +145,10 @@ function outside_on_load(){
           if(contact(rep)){
             contact_str = "<a class=\"external\" href=\""+contact(rep)+"\" title=\" Contact form: "+contact(rep)+"\"></a> "
           }
-          element.innerHTML += "<b>"+full_name(rep)+"</b> at: "+phone_str+email_str+contact_str+"</br>"
+          if(denier(rep)){
+            denier_str = " (<a class=\"denier\" href=\"/deniers/"+denier(rep)+"\">DENIER</a>)"
+          }
+          element.innerHTML += "<b>"+full_name(rep)+"</b>"+denier_str+" at: "+phone_str+email_str+contact_str+"</br>"
         })
     })
   }
