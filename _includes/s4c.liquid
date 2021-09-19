@@ -163,19 +163,44 @@ blockquote {
   transform: scale(1);
   transition: transform 0.5s;
   position: relative;
-  
+  padding-left: 0.25em;
+
   display: flex;
   align-items: center;
   /* font-size: 100px; */
 }
-@media (max-width:360px){
+@media screen and (max-width:360px){
     .slides > a > div {
         width: 270px;
     }
 }
-@media (min-width:360px){
+@media screen and (min-width:360px){
     .slides > a > div {
         width: 300px;
+    }
+}
+
+@media screen and (max-width: 379px) {
+    .slides > a > div {
+        font-size: smaller;
+        padding-right: 5em;
+    }
+}
+@media screen and (min-width: 380px) and (max-width: 450px) {
+    .slides > a > div {
+        font-size: small;
+        padding-right: 1em;
+    }
+}
+@media screen and (min-width: 451px) and (max-width: 768px) {
+    .slides > a > div {
+        font-size: small;
+        padding-right: 0;
+    }
+}
+@media screen and (min-width: 769px) {
+    .slides > a > div {
+        padding-right: 0;
     }
 }
 

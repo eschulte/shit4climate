@@ -6,9 +6,9 @@
         z-index: 3;
 	overflow: hidden;
 	margin: 0 auto;
-	width: 150px;
+	width: 125px;
 	height: 300px;
-	border-radius: 50px/25px;
+	border-radius: 30px/20px;
 	background-color: #eee;
         border: gray solid 4px;
 }
@@ -17,9 +17,9 @@
 	position: absolute;
 	left: 0;
 	top: 0;
-	width: 150px;
-	height: 50px;
-	border-radius: 50px/25px;
+	width: 125px;
+	height: 30px;
+	border-radius: 30px/20px;
 	/* background-color: rgba(160, 160, 160, 0.2); */
         background-color: #94751f;
 	content: '';
@@ -29,9 +29,52 @@
 	position: absolute;
 	left: 0;
 	bottom: 0;
-	width: 150px;
-	height: 50px;
-	border-radius: 50px/25px;
+	width: 125px;
+	height: 30px;
+	border-radius: 30px/20px;
 	background-color: #eee;
 	content: '';
+}
+
+@media (max-width:360px){
+    .cylinder {
+	width: 125px;
+	border-radius: 30px/20px;
+    }
+    .cylinder:before {
+	width: 125px;
+	border-radius: 30px/20px;
+    }
+    .cylinder:after {
+	width: 125px;
+	border-radius: 30px/20px;
+    }
+}
+@media (max-width:450px){
+    .cylinder {
+	width: 125px;
+	border-radius: 30px/20px;
+    }
+    .cylinder:before {
+	width: 125px;
+	border-radius: 30px/20px;
+    }
+    .cylinder:after {
+	width: 125px;
+	border-radius: 30px/20px;
+    }
+}
+@media (min-width:451px){
+    .cylinder {
+	width: 150px;
+	border-radius: 50px/25px;
+    }
+    .cylinder:before {
+	width: 150px;
+	border-radius: 50px/25px;
+    }
+    .cylinder:after {
+	width: 150px;
+	border-radius: 50px/25px;
+    }
 }
