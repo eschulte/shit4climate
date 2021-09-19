@@ -193,6 +193,7 @@ by `zip-hash'.")
               (format stream "~&  ~a: ~s~%" name content))))
         (let ((contact (match-denier denier)))
           ;; Populate `denier-file-by-full-name'.
+          #+nil
           (when contact
             (setf (gethash (first contact) denier-file-by-full-name)
                   (denier-filename denier)))
@@ -202,6 +203,7 @@ by `zip-hash'.")
             ("quote" ,(nth 7 denier))
             ("quote-ref" ,(nth 8 denier))
             ("quote-ref-url" ,(nth 9 denier))
+            ("dirty-money" ,(nth 10 denier))
             ("phone" ,(second contact))
             ("email" ,(third contact))
             ("contact" ,(fourth contact)))))

@@ -7,5 +7,6 @@
   quote: "Rep. Hagedorn said on Minnesota Public Radio, \"The earth has been heating and cooling since God's creation.\""
   quote-ref: "MPR News, 9/27/18"
   quote-ref-url: "https://www.mprnews.org/story/2018/09/27/minnesota-midterm-climate-voter-guide"
+  dirty-money: "$23,700"
   phone: "202-225-2472"
 ---
