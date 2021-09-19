@@ -102,6 +102,9 @@
           representatives)
     hash))
 
+(defvar state-district-to-representative-alist
+  (hash-table-alist state-district-to-representative))
+
 
 ;;; State representatives
 (defvar state-district-to-state-representative
@@ -139,11 +142,91 @@
 
 
 ;;; Write out the results.
+#+nil
 (mapc (lambda (zip)
         (with-open-file (out (make-pathname :directory
-                                            '(:relative "zip-data")
+                                            `(:relative "zip-data" ,(take 2 zip))
                                             :name zip
                                             :type "json")
                              :direction :output :if-exists :supersede)
           (encode-json (zip-hash zip) out)))
       (hash-table-keys zip-to-state-district))
+
+
+;;; Deiners
+(defvar deniers
+  (cl-csv:read-csv
+   (file-to-string "_submodules/non-git/climate-deniers-2019-final-rep-level-details.csv")))
+
+(defun drop-periods (string)
+  (regex-replace-all "\\." string ""))
+
+(defvar denier-file-by-full-name (make-hash-table :test #'equalp)
+  "Collect denier file names by their full names as listed in zip contact.
+This is populated as a side effect of `match-denier' and is then used
+by `zip-hash'.")
+
+(defun denier-filename (denier)
+  (regex-replace-all "[\\s]" (drop-periods (string-downcase (fifth denier))) "-"))
+
+(defun reps-for-state (state)
+  (mappend #'cdr (remove-if-not [{string= state} {subseq _ 0 2} #'first]
+                                state-district-to-representative-alist)))
+
+(defun match-denier (denier)
+  (let ((state (string-upcase (second denier))))
+    (find-if (lambda (contact) ; Every denier name fragment matches contact info.
+               (every {search _ (string-downcase (drop-periods (car contact)))}
+                      (nest (split-sequence #\Space)
+                            (drop-periods)
+                            (string-downcase)
+                            (fifth denier))))
+             (ecase (intern (string-upcase (third denier)))
+               (representative (reps-for-state state))
+               (senator (gethash state state-to-senator))))))
+
+(defun denier-to-markdown (denier &optional (stream t))
+  (format stream "---~%  layout: denier~%  tags: denier~%")
+  (mapc (lambda (pair)
+          (destructuring-bind (name content) pair
+            (when content
+              (format stream "~&  ~a: ~s~%" name content))))
+        (let ((contact (match-denier denier)))
+          ;; Populate `denier-file-by-full-name'.
+          (when contact
+            (setf (gethash (first contact) denier-file-by-full-name)
+                  (denier-filename denier)))
+          `(("title" ,(third denier))
+            ("name" ,(fifth denier))
+            ("state" ,(first denier))
+            ("quote" ,(nth 7 denier))
+            ("quote-ref" ,(nth 8 denier))
+            ("quote-ref-url" ,(nth 9 denier))
+            ("phone" ,(second contact))
+            ("email" ,(third contact))
+            ("contact" ,(fourth contact)))))
+  (format stream "~&---~%"))
+
+#+nil
+(mapcar
+ (lambda (denier)
+   (with-open-file (out (make-pathname :directory '(:relative "deniers")
+                                       :name (denier-filename denier)
+                                       :type "md")
+                        :direction :output :if-exists :supersede)
+     (denier-to-markdown denier out)))
+ (cdr deniers))
+
+(defun add-denier-filename (contact)
+  (append contact (list (gethash (first contact) denier-file-by-full-name))))
+
+#+nil
+(progn ; Add denier filenames to contacts for senators and representatives.
+  (maphash (lambda (key value)
+             (setf (gethash key state-to-senator)
+                   (mapcar #'add-denier-filename value)))
+           state-to-senator)
+  (maphash (lambda (key value)
+             (setf (gethash key state-district-to-representative)
+                   (mapcar #'add-denier-filename value)))
+           state-district-to-representative))

@@ -5,6 +5,7 @@ function full_name(legislator){ return legislator[0] }
 function phone(legislator){ return legislator[1] }
 function email(legislator){ return legislator[2] }
 function contact(legislator){ return legislator[3] }
+function denier(legislator){ return legislator[4] }
 
 // From https://stackoverflow.com/questions/12460378/how-to-get-json-from-url-in-javascript
 var remote_zip = function(zip, callback){
@@ -50,6 +51,7 @@ function populate_match(element, position, representatives){
     var phone_str = ""
     var email_str = ""
     var contact_str = ""
+    var denier_str = ""
     if(phone(rep)){
       phone_str = "<br/><a href=\"tel:+1"+phone(rep)+"\">"+phone(rep)+"</a>"
     }
@@ -62,7 +64,10 @@ function populate_match(element, position, representatives){
       // Only line break if no contact (contact is display:block; and creates vertical space).
       contact_str = "<br/>"
     }
-    element.innerHTML += "Contact "+position+" <b>"+full_name(rep)+"</b>:"+
+    if(denier(rep)){
+      denier_str = " <a class=\"denier\" href=\"/deniers/"+denier(rep)+"\">DENIER</a>"
+    }
+    element.innerHTML += "Contact "+position+" <b>"+full_name(rep)+denier_str+"</b>:"+
       phone_str+
       email_str+
       contact_str

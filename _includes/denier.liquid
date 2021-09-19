@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html class="s4c-fill">
+  <head>
+    <title>{{ title }}</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Script to discuss climate change with your representative.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{{ "/favicon.ico" |url }}">
+    <style>
+      {% capture css %}
+      {% include w3 %}
+      {% include s4c %}
+      {% include cloud %}
+      {% include construction %}
+      {% endcapture %}
+      {{ css | cssmin | safe }}
+    </style>
+  </head>
+  <body class="s4c-fill"
+        style="background-image: linear-gradient(skyblue, skyblue, gray);"
+        onload="outside_on_load()">
+    <header>
+      {% include top %}
+      <button class="s4c-top-button" style="right:0;"><a href="{{ "/"|url }}">Home</a></button>
+      <button class="s4c-top-button" style="right:0;top:3em;"><a href="{{ "/about"|url }}">about</a></button>
+    </header>
+    <div class="w3-container w3-margin" style="max-width:800px;margin:auto;padding:1em;">
+      <div id="content">
+        <h1 id="title">{{ title }}: {{ name }}</h1>
+        <h3 class="state">{{ state }}</h3>
+        {% if phone %}
+        <br/><a href="tel:+1{{ phone }}">{{ phone }}</a>
+        {% endif %}
+        {% if email %}
+        <br/><a href="mailto:{{ email }}">{{ email }}</a>
+        {% endif %}
+        {% if contact %}
+        <br/><a class="external" href="{{ contact }}">{{ contact }}</a>
+        {% endif %}
+        <blockquote>
+          <p>{{ quote|safe }}</p>
+          <p><a href="{{ quote-ref-url }}">{{ quote-ref }}</a></p>  
+        </blockquote>
+      </div>
+    </div>
+  </body>
+</html>
