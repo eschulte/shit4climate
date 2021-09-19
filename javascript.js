@@ -7,6 +7,22 @@ function email(legislator){ return legislator[2] }
 function contact(legislator){ return legislator[3] }
 function denier(legislator){ return legislator[4] }
 
+const local_storage_version = 1;
+function getVersioned(key){
+  const version = JSON.parse(localStorage.getItem('version'))
+  if(version && (version == local_storage_version)){
+    return localStorage.getItem(key)
+  } else {
+    localStorage.removeItem(key)
+    return null;
+  }
+}
+
+function setVersioned(key, value){
+  localStorage.setItem('version', local_storage_version)
+  return localStorage.setItem(key, value)
+}
+
 // From https://stackoverflow.com/questions/12460378/how-to-get-json-from-url-in-javascript
 var remote_zip = function(zip, callback){
   var xhr = new XMLHttpRequest()
@@ -15,7 +31,7 @@ var remote_zip = function(zip, callback){
   xhr.responseType = 'json'
   xhr.onload = function() {
     var status = xhr.status
-    var by_zip = JSON.parse(localStorage.getItem('by-zip'))
+    var by_zip = JSON.parse(getVersioned('by-zip'))
     if (status === 200) {
       console.log('Responded 200 for '+url+' with '+xhr.response)
       by_zip[zip] = xhr.response
@@ -23,7 +39,7 @@ var remote_zip = function(zip, callback){
       console.log('No JSON found for '+zip)
       by_zip[zip] = false
     }
-    localStorage.setItem('by-zip', JSON.stringify(by_zip))
+    setVersioned('by-zip', JSON.stringify(by_zip))
     callback(by_zip[zip])
   }
   xhr.send()
@@ -31,10 +47,10 @@ var remote_zip = function(zip, callback){
 
 // Given a ZIP call CALLBACK on it's data from (1) local storage or (2) a remote JSON file.
 function zip_data(zip, callback){
-  var by_zip = localStorage.getItem('by-zip')
+  var by_zip = getVersioned('by-zip')
   if(! by_zip){
     by_zip = {}
-    localStorage.setItem('by-zip', JSON.stringify(by_zip))
+    setVersioned('by-zip', JSON.stringify(by_zip))
   } else {
     by_zip = JSON.parse(by_zip)
   }
