@@ -3,7 +3,7 @@
 <div class="cylinder"></div>
 <div class="slides">
 {% assign index = 0 %}
-{% assign sorted = roll | sortByOrder %}
+{% assign sorted = roll | reverse | sortByOrder %}
 {% for piece in sorted %}
 <a href="{{ piece.url| url }}">
 <div id="slide-{{ index }}" class="w3-container">
