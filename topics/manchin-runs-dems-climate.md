@@ -3,7 +3,7 @@ title: Machin in charge of Dem's climate legislation
 layout: default
 tags: topics
 order: -1
-brief: 😢😢😢😢😢😢😢😢😢😢
+brief: 😢😢😢😢😢😢😢😢😢😢😢😢
 ---
 
 What's a rational response when the party you're supposed to vote for
