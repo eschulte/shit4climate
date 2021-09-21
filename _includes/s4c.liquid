@@ -242,6 +242,19 @@ blockquote {
     filter: brightness(0.85);
 }
 
+.slides > a > div.first:after {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+    transform: rotate(45deg);
+    content: '';
+    background-image: linear-gradient(to bottom right, transparent, transparent calc(50% - 1px), black calc(50% - 1px), black calc(50% + 1px), transparent calc(50% + 1px), transparent 100%);
+}
+
 @supports (scroll-snap-type) {
   .slider > a {
     display: none;
