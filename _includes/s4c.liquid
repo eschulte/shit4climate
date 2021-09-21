@@ -284,18 +284,17 @@ blockquote {
 
     background: white;
     border-radius: 0 0 20px 20px;
-    background-image: repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 2px,
-        #fff 2px,
-        #fff 6px
-    ), repeating-linear-gradient(
-        transparent,
-        transparent min(800px, 85vw),
-        #888 min(800px, 85vw),
-        #888 calc(min(800px, 85vw) + 3px)
-    );
+    background-image:
+        repeating-linear-gradient(
+            white,
+            white min(800px, 85vw),
+            transparent min(800px, 85vw),
+            transparent calc(min(800px, 85vw) + 9px)
+        ),
+        repeating-linear-gradient(
+            135deg, transparent, transparent 10px, gray 10px, gray 11px),
+        repeating-linear-gradient(
+            45deg, transparent, transparent 10px, gray 10px, gray 11px);
 }
 
 /* From: https://www.py4u.net/discuss/1021347 */
