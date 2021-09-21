@@ -3,6 +3,7 @@
 <div class="cylinder"></div>
 <div class="slides">
 {% assign index = 0 %}
+{% assign roll_size = roll | size %}
 {% assign sorted = roll | reverse | sortByOrder %}
 {% for piece in sorted %}
 <a href="{{ piece.url| url }}">
@@ -12,6 +13,12 @@
 </div>
 </a>
 {% assign index = index| plus: 1 %}
+{% if index >= roll_size %}
+<a href="#">
+<div id="slide-{{ index }}" class="w3-container last">
+</div>
+</a>
+{% endif %}
 {% endfor %}
 </div>
 </div>
