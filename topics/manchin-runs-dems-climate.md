@@ -24,14 +24,7 @@ See [NYTimes coverage of this issue][].
 - Start drinking more (highly recommend [Cocktail Codex][])
 - Read up on [how to apologize to your children][]
 - Come to terms with the possibility that politicians are gaslighting
-  you.  From [healthline: How to Recognize Gaslighting and Get Help][]:
-    > Signs of gaslighting
-    > - no longer feeling like the person you used to be.
-    > - being more anxious and less confident than you used to be.
-    > - often wondering if you're being too sensitive.
-    > - feeling like everything you do is wrong.
-    > - always thinking it's your fault when things go wrong.
-    > - apologizing often.
+  you.  (See [Are you gaslighting me?]({{ "/questions/are-you-gaslighting-me"|url }}))
 
 [202-224-3954]: tel:+1202-224-3954
 [NYTimes coverage of this issue]: https://www.nytimes.com/2021/09/19/climate/manchin-climate-biden.html
@@ -40,4 +33,3 @@ See [NYTimes coverage of this issue][].
 [get an anti-anxiety prescription]: https://www.google.com/search?q=how+to+get+a+prescription+for+anti+anxiety+medication
 [Cocktail Codex]: https://www.deathandcompanymarket.com/products/cocktail-codex
 [how to apologize to your children]: https://www.google.com/search?q=how+to+apologize+to+your+children
-[healthline: How to Recognize Gaslighting and Get Help]: https://www.healthline.com/health/gaslighting
