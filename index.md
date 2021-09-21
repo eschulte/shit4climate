@@ -12,7 +12,7 @@ Put your phone (and all those depressing facts your friends don't want
 to hear) to good use!  Call your representative and give them some shit.
 
 <form class="w3-container w3-margin">
-Enter your <label>Postal Code:</label>
+Enter your <label>Zip Code:</label>
 <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" onInput="zip_key_press()"></input>
 </form>
 
@@ -24,8 +24,8 @@ We'll help with
 [topics](#topics),
 [scripts](#scripts), and
 [questions](#questions).
-So hit a phone number, put it on speaker, jump back here, and let’s
-let some poor congressional staffer hear you purge.
+So enter your zip, hit a phone number, put it on speaker, jump back
+here, and let some poor congressional staffer hear you purge.
 
 <div id="call-link"></div>
 
