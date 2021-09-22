@@ -20,12 +20,9 @@ Enter your <label>Zip Code:</label>
 <div class="w3-container w3-margin-top" id="call-representative-by-zip"></div>
 <div class="w3-container w3-margin-top" id="call-state-representative-by-zip"></div>
 
-We'll help with
-[topics](#topics),
-[scripts](#scripts), and
-[questions](#questions).
-So enter your zip, hit a phone number, put it on speaker, jump back
-here, and let some poor congressional staffer hear you purge.
+We'll help by providing topics, scripts, and questions below.  So
+enter your zip, hit a phone number, put it on speaker, jump back here,
+and let some poor congressional staffer hear you purge.
 
 <div id="call-link"></div>
 
