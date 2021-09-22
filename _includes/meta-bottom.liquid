@@ -1,0 +1,18 @@
+<!-- -*- mode:mhtml -*-  -->
+<div class="coal-factory">
+  <div class="building" style="left:calc(50% - 150px);"></div>
+  <div class="building" style="left:calc(50% - 50px);"></div>
+  <div class="building" style="left:calc(50% + 50px);"></div>
+  <div class="tower" style="left:calc(50% - 20px);"></div>
+  <div class="tower" style="left:calc(50% + 75px);"></div>
+  <div id="smoke-3" class="smoke"></div>
+  <div id="smoke-2" class="smoke"></div>
+  <div id="smoke-1" class="smoke"></div>
+  <div id="smoke-0" class="smoke"></div>
+  <svg width="0" height="0"> 
+    <filter id="filter">
+      <feTurbulence type="fractalNoise" baseFrequency=".01" numOctaves="10" />
+      <feDisplacementMap in="SourceGraphic" scale="100" />
+    </filter>
+  </svg>
+</div>

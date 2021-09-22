@@ -1,0 +1,93 @@
+.coal-factory {
+    height: 400px;
+    width: 100%;
+    position: relative;
+}
+
+.coal-factory > .building {
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    width: 100px;
+    background: black;
+}
+
+.coal-factory > div.building:after {
+    position: absolute;
+    bottom:100%;
+    left: 0;
+    height: 100px;
+    width: 100px;
+    content: '';
+    background-image: linear-gradient(135deg,
+                                      transparent,
+                                      transparent 50%,
+                                      black 50%,
+                                      black 100%);
+}
+
+.coal-factory > .tower {
+    position: absolute;
+    bottom: 0;
+    height: 200px;
+    width: 36px;
+    background: black;
+}
+
+/* Smoke */
+
+.smoke {
+    position: absolute;
+    bottom: calc(200px - 18px + 200px);
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    z-index: -1;
+    box-shadow: 200px 200px 20px 0 #fff;
+    filter: url(#filter);
+}
+
+#smoke-0, #smoke-1 {
+    left:calc(50% - 20px - 200px);
+    animation: drift 5s ease-in infinite;
+    -webkit-animation: drift 5s ease-in infinite;
+}
+#smoke-2, #smoke-3 {
+    left:calc(50% + 75px - 200px);
+    animation: drift 5s ease-in infinite;
+    -webkit-animation: drift 5s ease-in infinite;
+}
+#smoke-0 {
+    -webkit-animation-delay: 0;
+    animation-delay: 0;
+}
+#smoke-1 {
+    -webkit-animation-delay: 4s;
+    animation-delay: 4s;
+}
+#smoke-2 {
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+}
+#smoke-3 {
+    -webkit-animation-delay: 3s;
+    animation-delay: 3s;
+}
+@keyframes {
+    0% {
+        bottom: calc(200px - 18px + 200px);
+    }
+    100% {
+        bottom: calc(200px + 144px + 200px);
+        box-shadow: 200px 200px 100px 0 #fff;
+    }
+}
+@-webkit-keyframes drift {
+    0% {
+        bottom: calc(200px - 18px + 200px);
+    }
+    100% {
+        bottom: calc(200px + 144px + 200px);
+        box-shadow: 200px 200px 100px 0 #fff;
+    }
+}

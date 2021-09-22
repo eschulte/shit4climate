@@ -11,6 +11,7 @@
       {% include w3 %}
       {% include s4c %}
       {% include cloud %}
+      {% include coal-factory %}
       {% endcapture %}
       {{ css | cssmin | safe }}
     </style>
@@ -29,5 +30,6 @@
       {{ content | safe }}
       </div>
     </div>
+    {% include meta-bottom %}
   </body>
 </html>
