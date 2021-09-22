@@ -130,14 +130,33 @@ function write_emails(){
       body_dom.removeChild(e)
     }
   })
-  Array.from(body_dom.getElementsByTagName("A")).forEach(e => {
-    e.text += " ("+e.href+")"
+  // Nice footnotes for links.
+  let footnote_counter = 1
+  let footnotes = ['']
+  Array.from(body_dom.getElementsByTagName('A')).forEach(e => {
+    e.text += ' ['+footnote_counter+']';
+    footnotes[footnote_counter] = e.href;
+    footnote_counter++;
   })
+  let footnote_str = ''
+  for(let i=1; i < footnote_counter; i++){
+    footnote_str += '['+i+'] '+footnotes[i]+'\n'
+  }
+  Array.from(body_dom.getElementsByTagName('LI')).forEach(e => {
+    e.children[0].innerHTML = '• '+e.children[0].innerHTML+'<br>'
+  })
+  Array.from(body_dom.getElementsByTagName('UL')).forEach(e => {
+    e.innerHTML = '<br><br>'+e.innerHTML
+  })
+
   let body = body_dom.textContent;
+
+  // Strip <br>s from body text.
+  body = body.replace(/<br><br>/gi, '\n').replace(/<br>/gi, ' ')
 
   Array.from(document.getElementsByClassName("email-link")).forEach(link => {
     link.href += "?subject="+encodeURI(subject)+"&body="+encodeURI(
-      "Representative "+link.id+",\n"+body+"\n\nVery Respectfully,\n")
+      "Representative "+link.id+",\n"+body+"\nVery Respectfully,\n\n"+footnote_str)
   })
 }
 
