@@ -11,8 +11,15 @@ if you care about climate puts someone who made 1/2 a million last
 year from his family's coal company in charge of climate legislation
 in their only chance to pass meaningful climate legislation?
 
-See [NYTimes coverage of this issue][].
+See:
+- [NYTimes coverage of this issue][].
+- This document [obtained by politico][] signed by Manchin and Schumer
+  codifying Manchin's jurisdiction over climate standards and stating
+  (among other things) that the reconciliation bill *will* include
+  carbon capture over coal and natural gas and *won't* undo tax breaks
+  for fossil fuels! 😡
 
+What to do?
 - Call Manchin and just weep into the phone [202-224-3954][]
 - Maybe it's time to give up on government and consider civil
   disobedience.  See [If our governments won’t stop climate change,
@@ -33,3 +40,4 @@ See [NYTimes coverage of this issue][].
 [get an anti-anxiety prescription]: https://www.google.com/search?q=how+to+get+a+prescription+for+anti+anxiety+medication
 [Cocktail Codex]: https://www.deathandcompanymarket.com/products/cocktail-codex
 [how to apologize to your children]: https://www.google.com/search?q=how+to+apologize+to+your+children
+[obtained by politico]: https://static.politico.com/1e/ef/159cabd547868585f9b1a8f06388/july-28-2021.pdf
