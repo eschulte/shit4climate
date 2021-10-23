@@ -23,7 +23,8 @@ What to do?
 - Call Manchin and just weep into the phone [202-224-3954][]
 - Maybe it's time to give up on government and consider civil
   disobedience.  See [If our governments won’t stop climate change,
-  should we revolt? Extinction Rebellion says yes.][].
+  should we revolt? Extinction Rebellion says yes.][] and [How to Blow
+  Up a Pipeline][] by Andreas Malm.
 - Work on your [post-apocalypse skills][].  Maybe ask your
   representatives to start funding free classes for apocalypse
   survival skills.
@@ -36,6 +37,7 @@ What to do?
 [202-224-3954]: tel:+1202-224-3954
 [NYTimes coverage of this issue]: https://www.nytimes.com/2021/09/19/climate/manchin-climate-biden.html
 [If our governments won’t stop climate change, should we revolt? Extinction Rebellion says yes.]: https://www.vox.com/future-perfect/2019/12/20/21028407/extinction-rebellion-climate-change-nonviolent-civil-disobedience
+[How to Blow Up a Pipeline]: https://www.amazon.com/gp/product/1839760257
 [post-apocalypse skills]: https://medium.com/@gypsybandito/10-skills-youll-need-to-survive-the-apocalypse-b1e274d58a12
 [get an anti-anxiety prescription]: https://www.google.com/search?q=how+to+get+a+prescription+for+anti+anxiety+medication
 [Cocktail Codex]: https://www.deathandcompanymarket.com/products/cocktail-codex
