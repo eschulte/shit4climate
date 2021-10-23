@@ -1,0 +1,55 @@
+Governor of Alabama	Kay Ivey	Republican	April 10, 2017
+Governor of Alaska	Mike Dunleavy	Republican	December 3, 2018
+Governor of American Samoa	Lemanu Palepoi Mauga	Democratic	January 3, 2021
+Governor of Arizona	Doug Ducey	Republican	January 5, 2015
+Governor of Arkansas	Asa Hutchinson	Republican	January 13, 2015
+Governor of California	Gavin Newsom	Democratic	2019
+Governor of Colorado	Jared Polis	Democratic	2019
+Governor of Connecticut	Ned Lamont	Democratic	2019
+Governor of Delaware	John C. Carney Jr.	Democratic	January 17, 2017
+Governor of Florida	Ron DeSantis	Republican	January 8, 2019
+Governor of Georgia	Brian Kemp	Republican	January 14, 2019
+Governor of Guam	Lou Leon Guerrero	Democratic	January 7, 2019
+Governor of Hawaii	David Ige	Democratic	December 1, 2014
+Governor of Idaho	Brad Little	Republican	2019
+Governor of Illinois	J.B. Pritzker	Democratic	2019
+Governor of Indiana	Eric Holcomb	Republican	January 9, 2017
+Governor of Iowa	Kim Reynolds	Republican	May 24, 2017
+Governor of Kansas	Laura Kelly	Democratic	January 14, 2019
+Governor of Kentucky	Andy Beshear	Democratic	December 10, 2019
+Governor of Louisiana	John Bel Edwards	Democratic	January 11, 2016
+Governor of Maine	Janet T. Mills	Democratic	January 2, 2019
+Governor of Maryland	Larry Hogan	Republican	January 21, 2015
+Governor of Massachusetts	Charles D. Baker	Republican	January 8, 2015
+Governor of Michigan	Gretchen Whitmer	Democratic	January 1, 2019
+Governor of Minnesota	Tim Walz	Democratic	January 7, 2019
+Governor of Mississippi	Tate Reeves	Republican	January 14, 2020
+Governor of Missouri	Mike Parson	Republican	June 1, 2018
+Governor of Montana	Greg Gianforte	Republican	January 4, 2021
+Governor of Nebraska	Pete Ricketts	Republican	January 8, 2015
+Governor of Nevada	Steve Sisolak	Democratic	2019
+Governor of New Hampshire	Chris Sununu	Republican	January 5, 2017
+Governor of New Jersey	Phil Murphy	Democratic	2018
+Governor of New Mexico	Michelle Lujan Grisham	Democratic	January 1, 2019
+Governor of New York	Kathy Hochul	Democratic	August 24, 2021
+Governor of North Carolina	Roy Cooper	Democratic	January 1, 2017
+Governor of North Dakota	Doug Burgum	Republican	December 15, 2016
+Governor of Ohio	Richard Michael DeWine	Republican	January 14, 2019
+Governor of Oklahoma	Kevin Stitt	Republican	January 14, 2019
+Governor of Oregon	Kate Brown	Democratic	2015
+Governor of Pennsylvania	Tom Wolf	Democratic	January 20, 2015
+Governor of Puerto Rico	Pedro Pierluisi Urrutia	New Progressive	January 2, 2021
+Governor of Rhode Island	Daniel McKee	Democratic	March 2, 2021
+Governor of South Carolina	Henry McMaster	Republican	January 24, 2017
+Governor of South Dakota	Kristi L. Noem	Republican	2019
+Governor of Tennessee	Bill Lee	Republican	January 15, 2019
+Governor of Texas	Greg Abbott	Republican	2015
+Governor of Utah	Spencer Cox	Republican	January 4, 2021
+Governor of Vermont	Phil Scott	Republican	January 5, 2017
+Governor of Virginia	Ralph Northam	Democratic	January 10, 2018
+Governor of Washington	Jay Inslee	Democratic	January 16, 2013
+Governor of West Virginia	Jim Justice	Republican	January 16, 2017
+Governor of Wisconsin	Tony Evers	Democratic	2019
+Governor of Wyoming	Mark Gordon	Republican	2019
+Governor of the Northern Mariana Islands	Ralph Torres	Republican	December 29, 2015
+Governor of the U.S. Virgin Islands	Albert Bryan	Democratic	January 7, 2019
