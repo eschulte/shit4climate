@@ -6,11 +6,11 @@ tags: questions
 ---
 
 The following senators are all Republicans in states with Democratic
-governors, meaning that if they retired then they would likely be
-replaced by a Democrat.  This would potentially get the Democrats to
-over 50 votes in the Senate for real climate legislation.  (Noting
-that Joe Manchin isn't really a Democrat, he's loyal to the party of
-Coal).
+governors, meaning that if they retired they will likely be replaced
+by a Democrat.  Even just one retiree could get the Democrats over 50
+votes in the Senate for real climate legislation.  (Noting that Joe
+Manchin isn't really a Democrat, he is loyal to his family's Coal
+holdings.)
 
 | State          | Name             | Phone                                         |
 |----------------|------------------|-----------------------------------------------|
@@ -25,3 +25,6 @@ Coal).
 | North Carolina | Thom tillis      | <a href="tel:+1202-224-6342">202-224-6342</a> |
 | Pennsylvania   | Patrick J Toomey | <a href="tel:+1202-224-4254">202-224-4254</a> |
 | Wisconsin      | Ron Johnson      | <a href="tel:+1202-224-5323">202-224-5323</a> |
+
+So, see if you can talk someone in to retiring and spending their
+golden years not ruining the world for the rest of us.
